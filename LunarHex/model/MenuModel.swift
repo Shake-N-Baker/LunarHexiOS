@@ -1,5 +1,5 @@
 //
-//  Menu.swift
+//  MenuModel.swift
 //  LunarHex
 //
 //  Created by Ian Baker on 1/13/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// The menu class.
-class Menu {
-    /// Reference to the main game scene.
-    var scene: GameScene!
+/**
+ The Menu model class holds the state of the menu.
+ */
+class MenuModel {
 }

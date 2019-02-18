@@ -1,5 +1,5 @@
 //
-//  Menu.swift
+//  MenuController.swift
 //  LunarHex
 //
 //  Created by Ian Baker on 1/13/19.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// The menu class.
+/**
+ The Menu Controller class handles updates and input to the menu state.
+ */
 class MenuController {
-    /// Reference to the main game scene.
-    var scene: GameScene!
 }
