@@ -1,5 +1,5 @@
 //
-//  View.swift
+//  MainView.swift
 //  LunarHex
 //
 //  Created by Ian Baker on 1/2/19.
@@ -10,9 +10,9 @@ import SpriteKit
 import GameplayKit
 
 /**
- The View class handles displaying the game.
+ The Main View class handles displaying the game and distributing view work to sub views.
  */
-class View {
+class MainView {
     
     /**
      Reference to the scene.

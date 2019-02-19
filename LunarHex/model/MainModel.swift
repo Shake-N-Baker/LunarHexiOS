@@ -1,5 +1,5 @@
 //
-//  MenuModel.swift
+//  MainModel.swift
 //  LunarHex
 //
 //  Created by Ian Baker on 1/13/19.
@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- The Menu model class holds the state of the menu.
+ The Main Model class holds the state of the game between itself and sub models.
  */
-class MenuModel {
+class MainModel {
 }

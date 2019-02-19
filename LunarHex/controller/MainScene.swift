@@ -10,22 +10,27 @@ import SpriteKit
 import GameplayKit
 
 /**
- The Main Scene class receives and handles updates from the scene.
+ The Main Scene class acts as the main controller, handles updates from the scene and distributes them to sub controllers.
  */
 class MainScene: SKScene {
     
     /**
-     The game view handler.
+     Reference to the main view handler.
      */
-    var gameView: View!
+    var mainView: MainView!
+    
+    /**
+     Reference to the main model.
+     */
+    var mainModel: MainModel!
     
     /**
      Called immediately after a scene is presented by a view.
      - Parameter view: The view that is presenting the scene.
      */
     override func didMove(to view: SKView) {
-        gameView = View()
-        gameView!.initialize(self)
+        mainView = MainView()
+        mainView.initialize(self)
     }
     
     /**
