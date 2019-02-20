@@ -12,4 +12,21 @@ import Foundation
  The Main Model class holds the state of the game between itself and sub models.
  */
 class MainModel {
+    
+    /**
+     Reference to the menu model.
+     */
+    var menuModel: MenuModel!
+    
+    /**
+     Whether the current view is of the menu, else viewing a level of the game.
+     */
+    var viewingMenu: Bool = true
+    
+    /**
+     Initializes the main model.
+     */
+    public init() {
+        menuModel = MenuModel()
+    }
 }

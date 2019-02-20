@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2108EDE4221A59EC008A2D3A /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDE3221A59EC008A2D3A /* MainScene.swift */; };
+		2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDE5221D05EF008A2D3A /* MenuView.swift */; };
+		2108EDE8221D06FC008A2D3A /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDE7221D06FC008A2D3A /* MenuModel.swift */; };
 		215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215934E921EC1E5F002BD35A /* MainModel.swift */; };
 		215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EB21F15937002BD35A /* Lato-Regular.ttf */; };
 		215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EE21F15A90002BD35A /* Lato-Heavy.ttf */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		2108EDE3221A59EC008A2D3A /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		2108EDE5221D05EF008A2D3A /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		2108EDE7221D06FC008A2D3A /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		215934E921EC1E5F002BD35A /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		215934EB21F15937002BD35A /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		215934EE21F15A90002BD35A /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				215934E921EC1E5F002BD35A /* MainModel.swift */,
+				2108EDE7221D06FC008A2D3A /* MenuModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -59,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				2190C17B21DDC9A90017726B /* MainView.swift */,
+				2108EDE5221D05EF008A2D3A /* MenuView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -189,7 +195,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2190C17C21DDC9A90017726B /* MainView.swift in Sources */,
+				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,
+				2108EDE8221D06FC008A2D3A /* MenuModel.swift in Sources */,
 				2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */,
 				2108EDE4221A59EC008A2D3A /* MainScene.swift in Sources */,
 				215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */,

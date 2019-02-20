@@ -1,8 +1,8 @@
 //
-//  MainView.swift
+//  MenuView.swift
 //  LunarHex
 //
-//  Created by Ian Baker on 1/2/19.
+//  Created by Ian Baker on 2/19/19.
 //  Copyright © 2019 Ian Baker. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import SpriteKit
 import GameplayKit
 
 /**
- The Main View class handles displaying the game and distributing view work to sub views.
+ The Menu View class handles displaying the menu.
  */
-class MainView {
+class MenuView {
     
     /**
      Reference to the scene.
@@ -25,25 +25,30 @@ class MainView {
     var model: MainModel!
     
     /**
-     Reference to the view in charge of displaying the menu.
+     The menu title label.
      */
-    var menuView: MenuView!
+    var title: SKLabelNode!
     
     /**
-     Initializes the main view.
+     Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
      */
     public init(_ mainScene: MainScene, _ mainModel: MainModel) {
         scene = mainScene
         model = mainModel
-        menuView = MenuView(scene, model)
+        title = SKLabelNode(fontNamed: "Lato-Heavy")
+        title.zPosition = 1
+        title.position = CGPoint(x: (scene.size.width * 0.5), y: (scene.size.height * 0.85))
+        title.fontSize = 60
+        title.text = "LUNAR HEX"
+        title.fontColor = SKColor.white
+        scene.addChild(title)
     }
     
     /**
-     Handles updating the main view for the current game tick.
+     Handles updating the menu view for the current game tick.
      */
     public func update() {
-        menuView.update()
     }
 }

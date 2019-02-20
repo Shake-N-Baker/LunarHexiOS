@@ -15,6 +15,16 @@ import GameplayKit
 class MainScene: SKScene {
     
     /**
+     Game constants.
+     */
+    struct Constants {
+        /**
+         Length of time between in game ticks/frames/updates.
+         */
+        static let updateInterval: TimeInterval = 1/60
+    }
+    
+    /**
      Reference to the main view handler.
      */
     var mainView: MainView!
@@ -25,12 +35,17 @@ class MainScene: SKScene {
     var mainModel: MainModel!
     
     /**
+     The next time threshold for the game to update.
+     */
+    var nextUpdateTime: TimeInterval!
+    
+    /**
      Called immediately after a scene is presented by a view.
      - Parameter view: The view that is presenting the scene.
      */
     override func didMove(to view: SKView) {
-        mainView = MainView()
-        mainView.initialize(self)
+        mainModel = MainModel()
+        mainView = MainView(self, mainModel)
     }
     
     /**
@@ -38,5 +53,13 @@ class MainScene: SKScene {
      - Parameter currentTime: The current system time.
      */
     override func update(_ currentTime: TimeInterval) {
+        if nextUpdateTime == nil {
+            nextUpdateTime = currentTime + Constants.updateInterval
+        } else {
+            if currentTime >= nextUpdateTime {
+                nextUpdateTime = currentTime + Constants.updateInterval
+                mainView.update()
+            }
+        }
     }
 }
