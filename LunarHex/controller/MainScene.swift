@@ -32,7 +32,7 @@ class MainScene: SKScene {
     /**
      Reference to the main model.
      */
-    var mainModel: MainModel!
+    var model: MainModel!
     
     /**
      The next time threshold for the game to update.
@@ -44,8 +44,8 @@ class MainScene: SKScene {
      - Parameter view: The view that is presenting the scene.
      */
     override func didMove(to view: SKView) {
-        mainModel = MainModel()
-        mainView = MainView(self, mainModel)
+        model = MainModel(self)
+        mainView = MainView(self, model)
     }
     
     /**
@@ -55,11 +55,10 @@ class MainScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         if nextUpdateTime == nil {
             nextUpdateTime = currentTime + Constants.updateInterval
-        } else {
-            if currentTime >= nextUpdateTime {
-                nextUpdateTime = currentTime + Constants.updateInterval
-                mainView.update()
-            }
+        } else if currentTime >= nextUpdateTime {
+            nextUpdateTime = currentTime + Constants.updateInterval
+            mainView.update()
+            model.menu.screenOffset += 1
         }
     }
 }

@@ -39,7 +39,7 @@ class MenuView {
         model = mainModel
         title = SKLabelNode(fontNamed: "Lato-Heavy")
         title.zPosition = 1
-        title.position = CGPoint(x: (scene.size.width * 0.5), y: (scene.size.height * 0.85))
+        title.position = CGPoint(x: (CGFloat(model.screenWidth) * 0.5), y: (CGFloat(model.screenHeight) * 0.85))
         title.fontSize = 60
         title.text = "LUNAR HEX"
         title.fontColor = SKColor.white
@@ -50,5 +50,6 @@ class MenuView {
      Handles updating the menu view for the current game tick.
      */
     public func update() {
+        title.position = CGPoint(x: ((CGFloat(model.screenWidth) * 0.5) + CGFloat(model.menu.screenOffset)), y: (CGFloat(model.screenHeight) * 0.85))
     }
 }

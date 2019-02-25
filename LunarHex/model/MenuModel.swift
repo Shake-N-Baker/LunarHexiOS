@@ -14,6 +14,11 @@ import Foundation
 class MenuModel {
     
     /**
+     The translation magnitude between the left most point of the menu and the screen.
+     */
+    var screenOffset: Int = 0
+    
+    /**
      Initializes the menu model.
      */
     public init() {
