@@ -6,8 +6,7 @@
 //  Copyright © 2019 Ian Baker. All rights reserved.
 //
 
-import SpriteKit
-import GameplayKit
+import CoreGraphics
 
 /**
  The Main Model class holds the state of the game between itself and sub models.

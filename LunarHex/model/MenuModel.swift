@@ -19,6 +19,16 @@ class MenuModel {
     var screenOffset: Int = 0
     
     /**
+     The title position X coordinate.
+     */
+    var titleX: Int!
+    
+    /**
+     The title position Y coordinate.
+     */
+    var titleY: Int!
+    
+    /**
      Initializes the menu model.
      */
     public init() {
