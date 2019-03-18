@@ -64,7 +64,7 @@ class MainScene: SKScene {
      - Parameter event: The event to which the touches belong.
      */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        model.tapping = true
+        model.touch.tapping = true
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.downX = model.touch.x
@@ -82,8 +82,6 @@ class MainScene: SKScene {
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
-            
-            print("down X/Y: \(model.touch.downX)/\(model.touch.downY), X/Y: \(model.touch.x)/\(model.touch.y)")
         }
     }
     
@@ -94,12 +92,10 @@ class MainScene: SKScene {
      */
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        model.tapping = false
+        model.touch.tapping = false
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
-            
-            print("down X/Y: \(model.touch.downX)/\(model.touch.downY), X/Y: \(model.touch.x)/\(model.touch.y)")
         }
     }
 }

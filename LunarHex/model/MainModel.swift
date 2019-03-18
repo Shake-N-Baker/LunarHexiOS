@@ -39,11 +39,6 @@ class MainModel {
     var viewingMenu: Bool = true
     
     /**
-     Whether the user is currently tapping the screen.
-     */
-    var tapping: Bool = false
-    
-    /**
      Initializes the main model.
      - Parameter mainScene: Reference to the main scene.
      */

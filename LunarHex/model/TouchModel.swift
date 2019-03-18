@@ -34,6 +34,11 @@ class TouchModel {
     var downY: Int = 0
     
     /**
+     Whether the user is currently tapping the screen.
+     */
+    var tapping: Bool = false
+    
+    /**
      Initializes the touch model.
      */
     public init() {
