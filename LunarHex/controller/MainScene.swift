@@ -57,4 +57,49 @@ class MainScene: SKScene {
             mainView.update()
         }
     }
+    
+    /**
+     Tells this object that one or more new touches occurred in a view or window.
+     - Parameter touches: A set of [UITouch](apple-reference-documentation://hsatbdjPCV) instances that represent the touches for the starting phase of the event, which is represented by event. For touches in a view, this set contains only one touch by default. To receive multiple touches, you must set the view's [isMultipleTouchEnabled](apple-reference-documentation://hsyDhIpFIc) property to true.
+     - Parameter event: The event to which the touches belong.
+     */
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        model.tapping = true
+        if let touch = touches.first {
+            model.touch.x = Int(touch.location(in: self).x)
+            model.touch.downX = model.touch.x
+            model.touch.y = Int(touch.location(in: self).y)
+            model.touch.downY = model.touch.y
+        }
+    }
+    
+    /**
+     Tells the responder when one or more touches associated with an event changed.
+     - Parameter touches: A set of [UITouch](apple-reference-documentation://hsatbdjPCV) instances that represent the touches whose values changed. These touches all belong to the specified event. For touches in a view, this set contains only one touch by default. To receive multiple touches, you must set the view's [isMultipleTouchEnabled](apple-reference-documentation://hsyDhIpFIc) property to true.
+     - Parameter event: The event to which the touches belong.
+     */
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            model.touch.x = Int(touch.location(in: self).x)
+            model.touch.y = Int(touch.location(in: self).y)
+            
+            print("down X/Y: \(model.touch.downX)/\(model.touch.downY), X/Y: \(model.touch.x)/\(model.touch.y)")
+        }
+    }
+    
+    /**
+     Tells the responder when one or more fingers are raised from a view or window.
+     - Parameter touches: A set of [UITouch](apple-reference-documentation://hsatbdjPCV) instances that represent the touches for the ending phase of the event represented by event. For touches in a view, this set contains only one touch by default. To receive multiple touches, you must set the view's [isMultipleTouchEnabled](apple-reference-documentation://hsyDhIpFIc) property to true.
+     - Parameter event: The event to which the touches belong.
+     */
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        model.tapping = false
+        if let touch = touches.first {
+            model.touch.x = Int(touch.location(in: self).x)
+            model.touch.y = Int(touch.location(in: self).y)
+            
+            print("down X/Y: \(model.touch.downX)/\(model.touch.downY), X/Y: \(model.touch.x)/\(model.touch.y)")
+        }
+    }
 }

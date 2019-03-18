@@ -19,6 +19,11 @@ class MainModel {
     var menu: MenuModel!
     
     /**
+     Reference to the touch event model.
+     */
+    var touch: TouchModel!
+    
+    /**
      The screen width measured from the scene.
      */
     var screenWidth: Int!
@@ -34,11 +39,17 @@ class MainModel {
     var viewingMenu: Bool = true
     
     /**
+     Whether the user is currently tapping the screen.
+     */
+    var tapping: Bool = false
+    
+    /**
      Initializes the main model.
      - Parameter mainScene: Reference to the main scene.
      */
     public init(_ mainScene: MainScene) {
         menu = MenuModel()
+        touch = TouchModel()
         screenWidth = Int(mainScene.size.width)
         screenHeight = Int(mainScene.size.height)
     }

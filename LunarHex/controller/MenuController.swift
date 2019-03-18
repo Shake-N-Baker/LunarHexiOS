@@ -31,7 +31,7 @@ class MenuController {
      Handles updating the menu for the current game tick.
      */
     public func update() {
-        model.menu.screenOffset += 1
+        
     }
     
     /**
