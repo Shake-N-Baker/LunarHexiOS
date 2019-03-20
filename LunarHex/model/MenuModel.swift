@@ -19,6 +19,11 @@ class MenuModel {
     var screenOffset: Int = 0
     
     /**
+     The initial value of the screen offset when drag touch event began.
+     */
+    var dragOffsetStart: Int = 0
+    
+    /**
      The title position X coordinate.
      */
     var titleX: Int!
@@ -27,6 +32,21 @@ class MenuModel {
      The title position Y coordinate.
      */
     var titleY: Int!
+    
+    /**
+     The spacing between levels.
+     */
+    var levelSpacing: Int!
+    
+    /**
+     The random level position X coordinate.
+     */
+    var randomX: Int!
+    
+    /**
+     The random level position Y coordinate.
+     */
+    var randomY: Int!
     
     /**
      Initializes the menu model.

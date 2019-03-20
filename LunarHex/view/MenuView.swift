@@ -30,6 +30,11 @@ class MenuView {
     var title: SKLabelNode!
     
     /**
+     The random level label.
+     */
+    var random: SKLabelNode!
+    
+    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -44,12 +49,20 @@ class MenuView {
         title.text = "LUNAR HEX"
         title.fontColor = SKColor.white
         scene.addChild(title)
+        random = SKLabelNode(fontNamed: "Lato-Regular")
+        random.zPosition = 1
+        random.position = CGPoint(x: model.menu.randomX, y: model.menu.randomY)
+        random.fontSize = 30
+        random.text = "RANDOM"
+        random.fontColor = SKColor.white
+        scene.addChild(random)
     }
     
     /**
      Handles updating the menu view for the current game tick.
      */
     public func update() {
-        title.position = CGPoint(x: model.menu.titleX + model.menu.screenOffset, y: model.menu.titleY)
+        title.position = CGPoint(x: model.menu.titleX - model.menu.screenOffset, y: model.menu.titleY)
+        random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
     }
 }

@@ -71,6 +71,7 @@ class MainScene: SKScene {
             model.touch.y = Int(touch.location(in: self).y)
             model.touch.downY = model.touch.y
         }
+        menuController.touchBegan()
     }
     
     /**

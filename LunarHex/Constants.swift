@@ -19,6 +19,11 @@ class Constants {
     static let updateInterval: TimeInterval = 1/60
     
     /**
+     The number of levels in the game.
+     */
+    static let levels: Int = 30
+    
+    /**
      The position of the menu title in screen widths.
      */
     static let menutitleXScreens: CGFloat = 0.5
@@ -27,4 +32,14 @@ class Constants {
      The position of the menu title in screen heights.
      */
     static let menutitleYScreens: CGFloat = 0.85
+    
+    /**
+     The top left position of the first level label in screen heights.
+     */
+    static let levelsTopLeftYScreens: CGFloat = 0.26
+    
+    /**
+     The spacing between level labels in screen widths.
+     */
+    static let levelSpacingXScreens: CGFloat = 0.2
 }
