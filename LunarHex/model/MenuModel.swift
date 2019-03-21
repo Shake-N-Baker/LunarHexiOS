@@ -49,6 +49,16 @@ class MenuModel {
     var randomY: Int!
     
     /**
+     Array of level position X coordinates.
+     */
+    var levelX: Array<Int> = Array()
+    
+    /**
+     Array of level position Y coordinates.
+     */
+    var levelY: Array<Int> = Array()
+    
+    /**
      Initializes the menu model.
      */
     public init() {

@@ -53,7 +53,12 @@ class MenuController {
         model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menutitleXScreens)
         model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menutitleYScreens)
         model.menu.levelSpacing = Int(CGFloat(model.screenWidth) * Constants.levelSpacingXScreens)
+        let levelTopLeftY: Int = Int(CGFloat(model.screenHeight) * Constants.levelsTopLeftYScreens)
         model.menu.randomX = model.menu.titleX + (model.menu.levelSpacing * (Constants.levels + 1))
-        model.menu.randomY = Int(CGFloat(model.screenHeight) * Constants.levelsTopLeftYScreens)
+        model.menu.randomY = levelTopLeftY
+        for index in 1...Constants.levels {
+            model.menu.levelX.append(model.menu.titleX + (model.menu.levelSpacing * index))
+            model.menu.levelY.append(levelTopLeftY)
+        }
     }
 }

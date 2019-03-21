@@ -35,6 +35,11 @@ class MenuView {
     var random: SKLabelNode!
     
     /**
+     The array of level labels.
+     */
+    var levels: Array<SKLabelNode> = Array()
+    
+    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -56,6 +61,16 @@ class MenuView {
         random.text = "RANDOM"
         random.fontColor = SKColor.white
         scene.addChild(random)
+        for index in 1...Constants.levels {
+            let level: SKLabelNode = SKLabelNode(fontNamed: "Lato-Regular")
+            level.zPosition = 1
+            level.position = CGPoint(x: model.menu.levelX[index - 1], y: model.menu.levelY[index - 1])
+            level.fontSize = 30
+            level.text = "\(index)"
+            level.fontColor = SKColor.white
+            scene.addChild(level)
+            levels.append(level)
+        }
     }
     
     /**
@@ -64,5 +79,8 @@ class MenuView {
     public func update() {
         title.position = CGPoint(x: model.menu.titleX - model.menu.screenOffset, y: model.menu.titleY)
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
+        for index in 1...Constants.levels {
+            levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
+        }
     }
 }
