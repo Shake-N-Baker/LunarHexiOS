@@ -19,9 +19,19 @@ class MenuModel {
     var screenOffset: Int = 0
     
     /**
-     The initial value of the screen offset when drag touch event began.
+     The maximum value the screen offset can reach.
      */
-    var dragOffsetStart: Int = 0
+    var rightScreenOffsetBound: Int!
+    
+    /**
+     The initial value of the screen offset when the tap event began.
+     */
+    var tapOffsetStart: Int = 0
+    
+    /**
+     The velocity of the last tap event
+     */
+    var tapVelocity: Int = 0
     
     /**
      The title position X coordinate.

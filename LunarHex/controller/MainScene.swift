@@ -30,6 +30,11 @@ class MainScene: SKScene {
     var menuController: MenuController!
     
     /**
+     Reference to the tap event/state controller.
+     */
+    var tapController: TapController!
+    
+    /**
      The next time threshold for the game to update.
      */
     var nextUpdateTime: TimeInterval!
@@ -41,6 +46,7 @@ class MainScene: SKScene {
     override func didMove(to view: SKView) {
         model = MainModel(self)
         menuController = MenuController(model)
+        tapController = TapController(model)
         mainView = MainView(self, model)
     }
     
@@ -53,6 +59,7 @@ class MainScene: SKScene {
             nextUpdateTime = currentTime + Constants.updateInterval
         } else if currentTime >= nextUpdateTime {
             nextUpdateTime = currentTime + Constants.updateInterval
+            tapController.update()
             menuController.update()
             mainView.update()
         }
@@ -64,13 +71,13 @@ class MainScene: SKScene {
      - Parameter event: The event to which the touches belong.
      */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        model.touch.tapping = true
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.downX = model.touch.x
             model.touch.y = Int(touch.location(in: self).y)
             model.touch.downY = model.touch.y
         }
+        tapController.touchBegan()
         menuController.touchBegan()
     }
     
@@ -93,10 +100,10 @@ class MainScene: SKScene {
      */
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        model.touch.tapping = false
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
         }
+        tapController.touchEnded()
     }
 }

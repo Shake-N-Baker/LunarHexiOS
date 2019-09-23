@@ -31,19 +31,15 @@ class MenuController {
      Handles updating the menu for the current game tick.
      */
     public func update() {
-        model.menu.screenOffset = model.menu.dragOffsetStart + model.touch.downX - model.touch.x
-        if (model.menu.screenOffset < 0) {
-            model.menu.screenOffset = 0
-        } else if (model.menu.screenOffset > ((Constants.levels + 1) * model.menu.levelSpacing)) {
-            model.menu.screenOffset = ((Constants.levels + 1) * model.menu.levelSpacing)
-        }
+        model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
+        model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.rightScreenOffsetBound)
     }
     
     /**
      Handles updating the menu when a new touch occurs.
      */
     public func touchBegan() {
-        model.menu.dragOffsetStart = model.menu.screenOffset
+        model.menu.tapOffsetStart = model.menu.screenOffset
     }
     
     /**
@@ -53,6 +49,7 @@ class MenuController {
         model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menutitleXScreens)
         model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menutitleYScreens)
         model.menu.levelSpacing = Int(CGFloat(model.screenWidth) * Constants.levelSpacingXScreens)
+        model.menu.rightScreenOffsetBound = ((Constants.levels + 1) * model.menu.levelSpacing)
         let levelTopLeftY: Int = Int(CGFloat(model.screenHeight) * Constants.levelsTopLeftYScreens)
         model.menu.randomX = model.menu.titleX + (model.menu.levelSpacing * (Constants.levels + 1))
         model.menu.randomY = levelTopLeftY
