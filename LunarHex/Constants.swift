@@ -42,4 +42,14 @@ class Constants {
      The spacing between level labels in screen widths.
      */
     static let levelSpacingXScreens: CGFloat = 0.2
+    
+    /**
+     The maximum tap velocity in screen widths.
+     */
+    static let maxTapVelocityXScreens: CGFloat = 0.08
+    
+    /**
+     Dampening magnitude to divide the tap velocity momentum by when a touch ends on the menu.
+     */
+    static let tapVelocityDampeningMagnitude: Int = 10
 }

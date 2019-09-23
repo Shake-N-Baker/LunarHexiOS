@@ -98,12 +98,12 @@ class MainScene: SKScene {
      - Parameter touches: A set of [UITouch](apple-reference-documentation://hsatbdjPCV) instances that represent the touches for the ending phase of the event represented by event. For touches in a view, this set contains only one touch by default. To receive multiple touches, you must set the view's [isMultipleTouchEnabled](apple-reference-documentation://hsyDhIpFIc) property to true.
      - Parameter event: The event to which the touches belong.
      */
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
         }
         tapController.touchEnded()
+        menuController.touchEnded()
     }
 }

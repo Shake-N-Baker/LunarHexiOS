@@ -21,7 +21,7 @@ class MenuModel {
     /**
      The maximum value the screen offset can reach.
      */
-    var rightScreenOffsetBound: Int!
+    var screenOffsetRightBound: Int!
     
     /**
      The initial value of the screen offset when the tap event began.
@@ -47,6 +47,11 @@ class MenuModel {
      The spacing between levels.
      */
     var levelSpacing: Int!
+    
+    /**
+     The spacing between levels.
+     */
+    var maxTapVelocity: Int!
     
     /**
      The random level position X coordinate.

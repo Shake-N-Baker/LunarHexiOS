@@ -49,7 +49,7 @@ class TapController {
     }
     
     /**
-     Handles updating the tap state when a  touch ends.
+     Handles updating the tap state when a touch ends.
      */
     public func touchEnded() {
         model.touch.tapping = false
