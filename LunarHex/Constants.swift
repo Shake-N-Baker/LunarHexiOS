@@ -52,4 +52,9 @@ class Constants {
      Dampening magnitude to divide the tap velocity momentum by when a touch ends on the menu.
      */
     static let tapVelocityDampeningMagnitude: Int = 10
+    
+    /**
+     The menu tap velocity reduction per update in screen widths.
+     */
+    static let tapVelocityResistanceXScreens: CGFloat = 0.001
 }

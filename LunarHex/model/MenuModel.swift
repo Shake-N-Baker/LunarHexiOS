@@ -29,9 +29,19 @@ class MenuModel {
     var tapOffsetStart: Int = 0
     
     /**
-     The velocity of the last tap event
+     The velocity of the menu sliding due to tap events.
      */
     var tapVelocity: Int = 0
+    
+    /**
+     The maximum tap velocity.
+     */
+    var maxTapVelocity: Int!
+    
+    /**
+     The tap velocity reduction per update.
+     */
+    var tapVelocityResistance: Int!
     
     /**
      The title position X coordinate.
@@ -47,11 +57,6 @@ class MenuModel {
      The spacing between levels.
      */
     var levelSpacing: Int!
-    
-    /**
-     The spacing between levels.
-     */
-    var maxTapVelocity: Int!
     
     /**
      The random level position X coordinate.

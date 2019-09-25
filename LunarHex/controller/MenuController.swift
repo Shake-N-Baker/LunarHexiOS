@@ -31,8 +31,13 @@ class MenuController {
      Handles updating the menu for the current game tick.
      */
     public func update() {
-        model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
-        model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
+        if (!model.touch.tapping) {
+            if (model.menu.tapVelocity != 0) {
+                applyTapVelocity()
+            } else {
+                slideToNearestLevel()
+            }
+        }
     }
     
     /**
@@ -40,6 +45,14 @@ class MenuController {
      */
     public func touchBegan() {
         model.menu.tapOffsetStart = model.menu.screenOffset
+    }
+    
+    /**
+     Handles updating the menu when a touch event changes position.
+     */
+    public func touchMoved() {
+        model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
+        model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
     }
     
     /**
@@ -51,7 +64,7 @@ class MenuController {
             nothingTapped = !handleTapEvent()
         }
         if (nothingTapped) {
-            applyTapVelocity()
+            calculateTapVelocity()
         }
     }
     
@@ -70,14 +83,14 @@ class MenuController {
         // Else hamburger menu closed
         //  Check open hamburger menu
         //  Check current level/random selection circle
-        //  Check side levels, move level to center
+        //  Check side levels if tapVelocity is 0, move level to center
         return false
     }
     
     /**
-     Applies the momentum from the latest touch event to the tap velocity.
+     Calculates the momentum from the latest touch event and adds or sets it to the tap velocity.
      */
-    private func applyTapVelocity() {
+    private func calculateTapVelocity() {
         if (model.menu.tapVelocity * (model.touch.tapPathX.last! - model.touch.x) > 0) {
             // Dragging in the same direction, add onto the velocity
             model.menu.tapVelocity += (model.touch.tapPathX.last! - model.touch.x) / Constants.tapVelocityDampeningMagnitude
@@ -89,12 +102,43 @@ class MenuController {
     }
     
     /**
+     Applies the velocity of recent touch events to continue sliding the menu after a touch ends.
+     */
+    private func applyTapVelocity() {
+        model.menu.screenOffset += model.menu.tapVelocity
+        if (model.menu.screenOffset < 0) {
+            model.menu.screenOffset = 0
+            model.menu.tapVelocity = 0
+        } else if (model.menu.screenOffset > model.menu.screenOffsetRightBound) {
+            model.menu.screenOffset = model.menu.screenOffsetRightBound
+            model.menu.tapVelocity = 0
+        }
+        
+        if (model.menu.tapVelocity > 0) {
+            model.menu.tapVelocity -= model.menu.tapVelocityResistance
+            model.menu.tapVelocity = max(model.menu.tapVelocity, 0)
+        } else {
+            model.menu.tapVelocity += model.menu.tapVelocityResistance
+            model.menu.tapVelocity = min(model.menu.tapVelocity, 0)
+        }
+    }
+    
+    /**
+     Slides the screen to center on the nearest level.
+     */
+    private func slideToNearestLevel() {
+        
+    }
+    
+    /**
      Calculates and assigns the menu view positions based on the screen dimensions.
      */
     private func calculateMenuPositions() {
         model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menutitleXScreens)
         model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menutitleYScreens)
         model.menu.maxTapVelocity = Int(CGFloat(model.screenWidth) * Constants.maxTapVelocityXScreens)
+        model.menu.tapVelocityResistance = Int(CGFloat(model.screenWidth) * Constants.tapVelocityResistanceXScreens)
+        model.menu.tapVelocityResistance = max(model.menu.tapVelocityResistance, 1)
         model.menu.levelSpacing = Int(CGFloat(model.screenWidth) * Constants.levelSpacingXScreens)
         model.menu.screenOffsetRightBound = ((Constants.levels + 1) * model.menu.levelSpacing)
         let levelTopLeftY: Int = Int(CGFloat(model.screenHeight) * Constants.levelsTopLeftYScreens)

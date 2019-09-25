@@ -91,6 +91,7 @@ class MainScene: SKScene {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
         }
+        menuController.touchMoved()
     }
     
     /**
