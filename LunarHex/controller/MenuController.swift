@@ -127,7 +127,24 @@ class MenuController {
      Slides the screen to center on the nearest level.
      */
     private func slideToNearestLevel() {
-        
+        if (model.menu.screenOffset % model.menu.levelSpacing != 0) {
+            var distanceLeft: Int
+            if (model.menu.screenOffset % model.menu.levelSpacing > (model.menu.levelSpacing / 2)) {
+                distanceLeft = model.menu.levelSpacing - (model.menu.screenOffset % model.menu.levelSpacing)
+                if (distanceLeft > model.menu.idleCenteringVelocity) {
+                    model.menu.screenOffset += model.menu.idleCenteringVelocity
+                } else {
+                    model.menu.screenOffset += distanceLeft
+                }
+            } else {
+                distanceLeft = model.menu.screenOffset % model.menu.levelSpacing
+                if (distanceLeft > model.menu.idleCenteringVelocity) {
+                    model.menu.screenOffset -= model.menu.idleCenteringVelocity
+                } else {
+                    model.menu.screenOffset -= distanceLeft
+                }
+            }
+        }
     }
     
     /**
@@ -136,9 +153,9 @@ class MenuController {
     private func calculateMenuPositions() {
         model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menutitleXScreens)
         model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menutitleYScreens)
-        model.menu.maxTapVelocity = Int(CGFloat(model.screenWidth) * Constants.maxTapVelocityXScreens)
-        model.menu.tapVelocityResistance = Int(CGFloat(model.screenWidth) * Constants.tapVelocityResistanceXScreens)
-        model.menu.tapVelocityResistance = max(model.menu.tapVelocityResistance, 1)
+        model.menu.idleCenteringVelocity = max(Int(CGFloat(model.screenWidth) * Constants.idleCenteringVelocityXScreens), 1)
+        model.menu.maxTapVelocity = max(Int(CGFloat(model.screenWidth) * Constants.maxTapVelocityXScreens), 1)
+        model.menu.tapVelocityResistance = max(Int(CGFloat(model.screenWidth) * Constants.tapVelocityResistanceXScreens), 1)
         model.menu.levelSpacing = Int(CGFloat(model.screenWidth) * Constants.levelSpacingXScreens)
         model.menu.screenOffsetRightBound = ((Constants.levels + 1) * model.menu.levelSpacing)
         let levelTopLeftY: Int = Int(CGFloat(model.screenHeight) * Constants.levelsTopLeftYScreens)

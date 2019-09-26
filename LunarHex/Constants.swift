@@ -44,6 +44,11 @@ class Constants {
     static let levelSpacingXScreens: CGFloat = 0.2
     
     /**
+     The menu velocity per update in screen widths to slide to a nearby level if not tapping or sliding already.
+     */
+    static let idleCenteringVelocityXScreens: CGFloat = 0.005
+    
+    /**
      The maximum tap velocity in screen widths.
      */
     static let maxTapVelocityXScreens: CGFloat = 0.08

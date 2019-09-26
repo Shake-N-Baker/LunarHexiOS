@@ -44,6 +44,11 @@ class MenuModel {
     var tapVelocityResistance: Int!
     
     /**
+     The menu velocity per update to slide to a nearby level if not tapping or sliding already.
+     */
+    var idleCenteringVelocity: Int!
+    
+    /**
      The title position X coordinate.
      */
     var titleX: Int!
