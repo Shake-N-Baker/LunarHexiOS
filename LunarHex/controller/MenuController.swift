@@ -151,8 +151,11 @@ class MenuController {
      Calculates and assigns the menu view positions based on the screen dimensions.
      */
     private func calculateMenuPositions() {
-        model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menutitleXScreens)
-        model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menutitleYScreens)
+        model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menuTitleXScreens)
+        model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menuTitleYScreens)
+        model.menu.selectionCircleX = Int(CGFloat(model.screenWidth) * Constants.menuSelectionCircleXScreens)
+        model.menu.selectionCircleY = Int(CGFloat(model.screenHeight) * Constants.menuSelectionCircleYScreens)
+        model.menu.selectionCircleRadius = Int(Utils.distanceBetweenPoints(x1: 0, y1: 0, x2: Double(model.screenWidth), y2: Double(model.screenHeight)) / Constants.menuSelectionCircleRadiusDivisor)
         model.menu.idleCenteringVelocity = max(Int(CGFloat(model.screenWidth) * Constants.idleCenteringVelocityXScreens), 1)
         model.menu.maxTapVelocity = max(Int(CGFloat(model.screenWidth) * Constants.maxTapVelocityXScreens), 1)
         model.menu.tapVelocityResistance = max(Int(CGFloat(model.screenWidth) * Constants.tapVelocityResistanceXScreens), 1)

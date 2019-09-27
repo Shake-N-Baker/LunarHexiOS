@@ -40,6 +40,11 @@ class MenuView {
     var levels: Array<SKLabelNode> = Array()
     
     /**
+     The level selection circle.
+     */
+    var selectionCircle: SKShapeNode!
+    
+    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -71,6 +76,13 @@ class MenuView {
             scene.addChild(level)
             levels.append(level)
         }
+        selectionCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.selectionCircleRadius))
+        selectionCircle.zPosition = 1
+        selectionCircle.position = CGPoint(x: model.menu.selectionCircleX, y: model.menu.selectionCircleY)
+        selectionCircle.strokeColor = SKColor.white
+        selectionCircle.glowWidth = 1.0
+        selectionCircle.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        scene.addChild(selectionCircle)
     }
     
     /**

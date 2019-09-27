@@ -26,12 +26,27 @@ class Constants {
     /**
      The position of the menu title in screen widths.
      */
-    static let menutitleXScreens: CGFloat = 0.5
+    static let menuTitleXScreens: CGFloat = 0.5
     
     /**
      The position of the menu title in screen heights.
      */
-    static let menutitleYScreens: CGFloat = 0.85
+    static let menuTitleYScreens: CGFloat = 0.85
+    
+    /**
+     The position of the menu level selection circle in screen widths.
+     */
+    static let menuSelectionCircleXScreens: CGFloat = 0.5
+    
+    /**
+     The position of the menu level selection circle in screen heights.
+     */
+    static let menuSelectionCircleYScreens: CGFloat = 0.27
+    
+    /**
+     The display size divisor for calculating the menu level selection circle radius.
+     */
+    static let menuSelectionCircleRadiusDivisor: Double = 13
     
     /**
      The top left position of the first level label in screen heights.

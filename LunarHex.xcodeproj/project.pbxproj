@@ -17,6 +17,7 @@
 		215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EB21F15937002BD35A /* Lato-Regular.ttf */; };
 		215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EE21F15A90002BD35A /* Lato-Heavy.ttf */; };
 		2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB523385CB6003DB3D8 /* TapController.swift */; };
+		2185DEB8233C68E3003DB3D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB7233C68E3003DB3D8 /* Utils.swift */; };
 		2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190C17521DDC9A90017726B /* AppDelegate.swift */; };
 		2190C17821DDC9A90017726B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2190C17721DDC9A90017726B /* GameScene.sks */; };
 		2190C17C21DDC9A90017726B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190C17B21DDC9A90017726B /* MainView.swift */; };
@@ -37,6 +38,7 @@
 		215934EB21F15937002BD35A /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		215934EE21F15A90002BD35A /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
 		2185DEB523385CB6003DB3D8 /* TapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapController.swift; sourceTree = "<group>"; };
+		2185DEB7233C68E3003DB3D8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2190C17221DDC9A90017726B /* LunarHex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarHex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2190C17521DDC9A90017726B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2190C17721DDC9A90017726B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				2190C18421DDC9AB0017726B /* LaunchScreen.storyboard */,
 				2190C18721DDC9AB0017726B /* Info.plist */,
 				2108EDEB2223A41B008A2D3A /* Constants.swift */,
+				2185DEB7233C68E3003DB3D8 /* Utils.swift */,
 			);
 			path = LunarHex;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */,
 				2108EDEC2223A41B008A2D3A /* Constants.swift in Sources */,
 				2108EDEE223F35AA008A2D3A /* TouchModel.swift in Sources */,
+				2185DEB8233C68E3003DB3D8 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

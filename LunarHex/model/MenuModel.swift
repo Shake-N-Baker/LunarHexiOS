@@ -59,6 +59,21 @@ class MenuModel {
     var titleY: Int!
     
     /**
+     The level selection circle position X coordinate.
+     */
+    var selectionCircleX: Int!
+    
+    /**
+    The level selection circle position Y coordinate.
+     */
+    var selectionCircleY: Int!
+    
+    /**
+    The level selection circle radius.
+     */
+    var selectionCircleRadius: Int!
+    
+    /**
      The spacing between levels.
      */
     var levelSpacing: Int!
