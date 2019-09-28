@@ -14,13 +14,13 @@ import CoreGraphics
  */
 class Utils {
     /**
-    Calculates the distance between two points.
-    - Parameter x1: First point X coordinate.
-    - Parameter y1: First point Y coordinate.
-    - Parameter x2: Second point X coordinate.
-    - Parameter y2: Second point Y coordinate.
-    - Returns: The distance between two points.
-    */
+     Calculates the distance between two points.
+     - Parameter x1: First point X coordinate.
+     - Parameter y1: First point Y coordinate.
+     - Parameter x2: Second point X coordinate.
+     - Parameter y2: Second point Y coordinate.
+     - Returns: The distance between two points.
+     */
     static func distanceBetweenPoints(x1: Double, y1: Double, x2: Double, y2: Double) -> Double {
         return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2))
     }

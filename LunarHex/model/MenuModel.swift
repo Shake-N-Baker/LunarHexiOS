@@ -110,6 +110,21 @@ class MenuModel {
     var levelY: Array<Int> = Array()
     
     /**
+    Array of level transparency 0.0 to 1.0.
+     */
+    var levelTransparency: Array<CGFloat> = Array()
+    
+    /**
+    Title text transparency 0.0 to 1.0.
+     */
+    var titleTransparency: CGFloat = 0
+    
+    /**
+    Random text transparency 0.0 to 1.0.
+     */
+    var randomTransparency: CGFloat = 0
+    
+    /**
      Initializes the menu model.
      */
     public init() {

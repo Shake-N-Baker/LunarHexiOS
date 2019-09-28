@@ -33,6 +33,7 @@ class MenuController {
     public func update() {
         updateScreenOffset()
         updateSelectionCircle()
+        updateTextTransparency()
     }
     
     /**
@@ -64,8 +65,8 @@ class MenuController {
     }
     
     /**
-    Handles updating the screen offset of the menu.
-    */
+     Handles updating the screen offset of the menu.
+     */
     private func updateScreenOffset() {
         if (!model.touch.tapping) {
             if (model.menu.tapVelocity != 0) {
@@ -77,8 +78,8 @@ class MenuController {
     }
     
     /**
-    Handles updating the selection circle of the menu.
-    */
+     Handles updating the selection circle of the menu.
+     */
     private func updateSelectionCircle() {
         let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
         var differenceFromCenter: Int = model.menu.screenOffset % model.menu.levelSpacing
@@ -93,6 +94,21 @@ class MenuController {
             model.menu.selectionCircleTransparency = 0
             model.menu.selectionCircleScale = 0
         }
+    }
+    
+    /**
+     Handles updating the title, levels and random text transparency.
+     */
+    private func updateTextTransparency() {
+        let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+        model.menu.titleTransparency = 1 - viewingLevel
+        var levelsFromText: CGFloat
+        for index in 1...Constants.levels {
+            levelsFromText = abs(viewingLevel - CGFloat(index))
+            model.menu.levelTransparency[index - 1] = 1 - (levelsFromText / 2.5)
+        }
+        levelsFromText = CGFloat(Constants.levels + 1) - viewingLevel
+        model.menu.randomTransparency = 1 - (levelsFromText / 2.5)
     }
     
     /**
@@ -194,6 +210,7 @@ class MenuController {
         for index in 1...Constants.levels {
             model.menu.levelX.append(model.menu.titleX + (model.menu.levelSpacing * index))
             model.menu.levelY.append(levelTopLeftY)
+            model.menu.levelTransparency.append(0)
         }
     }
 }

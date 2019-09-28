@@ -90,9 +90,12 @@ class MenuView {
      */
     public func update() {
         title.position = CGPoint(x: model.menu.titleX - model.menu.screenOffset, y: model.menu.titleY)
+        title.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.titleTransparency)
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
+        random.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.randomTransparency)
         for index in 1...Constants.levels {
             levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
+            levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.levelTransparency[index - 1])
         }
         selectionCircle.strokeColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
