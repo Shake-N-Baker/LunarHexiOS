@@ -94,5 +94,7 @@ class MenuView {
         for index in 1...Constants.levels {
             levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
         }
+        selectionCircle.strokeColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.selectionCircleTransparency)
+        selectionCircle.setScale(model.menu.selectionCircleScale)
     }
 }

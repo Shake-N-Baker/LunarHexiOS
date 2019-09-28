@@ -31,13 +31,8 @@ class MenuController {
      Handles updating the menu for the current game tick.
      */
     public func update() {
-        if (!model.touch.tapping) {
-            if (model.menu.tapVelocity != 0) {
-                applyTapVelocity()
-            } else {
-                slideToNearestLevel()
-            }
-        }
+        updateScreenOffset()
+        updateSelectionCircle()
     }
     
     /**
@@ -65,6 +60,38 @@ class MenuController {
         }
         if (nothingTapped) {
             calculateTapVelocity()
+        }
+    }
+    
+    /**
+    Handles updating the screen offset of the menu.
+    */
+    private func updateScreenOffset() {
+        if (!model.touch.tapping) {
+            if (model.menu.tapVelocity != 0) {
+                applyTapVelocity()
+            } else {
+                slideToNearestLevel()
+            }
+        }
+    }
+    
+    /**
+    Handles updating the selection circle of the menu.
+    */
+    private func updateSelectionCircle() {
+        let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+        var differenceFromCenter: Int = model.menu.screenOffset % model.menu.levelSpacing
+        if (differenceFromCenter > (model.menu.levelSpacing / 2)) {
+            differenceFromCenter -= model.menu.levelSpacing
+            differenceFromCenter *= -1
+        }
+        if (differenceFromCenter < model.menu.selectionCircleRadius && round(viewingLevel) != 0) {
+            model.menu.selectionCircleTransparency = 1.0 - (CGFloat(differenceFromCenter) / CGFloat(model.menu.selectionCircleRadius))
+            model.menu.selectionCircleScale = (CGFloat(model.menu.selectionCircleRadius) - CGFloat(differenceFromCenter)) / CGFloat(model.menu.selectionCircleRadius)
+        } else {
+            model.menu.selectionCircleTransparency = 0
+            model.menu.selectionCircleScale = 0
         }
     }
     

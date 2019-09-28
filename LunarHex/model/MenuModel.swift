@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 /**
  The Menu Model class holds the state of the menu.
@@ -72,6 +73,16 @@ class MenuModel {
     The level selection circle radius.
      */
     var selectionCircleRadius: Int!
+    
+    /**
+    The transparency 0.0 to 1.0 of the level selection circle.
+     */
+    var selectionCircleTransparency: CGFloat = 0
+    
+    /**
+    The scale of the level selection circle.
+     */
+    var selectionCircleScale: CGFloat = 0
     
     /**
      The spacing between levels.
