@@ -81,7 +81,7 @@ class MenuView {
         selectionCircle.position = CGPoint(x: model.menu.selectionCircleX, y: model.menu.selectionCircleY)
         selectionCircle.strokeColor = SKColor.white
         selectionCircle.glowWidth = 1.0
-        selectionCircle.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
     }
     
@@ -97,7 +97,7 @@ class MenuView {
             levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
             levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.levelTransparency[index - 1])
         }
-        selectionCircle.strokeColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.selectionCircleTransparency)
+        selectionCircle.strokeColor = SKColor.init(red: 168/255, green: 183/255, blue: 225/255, alpha: model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
     }
 }

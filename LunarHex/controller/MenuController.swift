@@ -24,7 +24,7 @@ class MenuController {
      */
     public init(_ mainModel: MainModel) {
         model = mainModel
-        calculateMenuPositions()
+        setScreenSizeValues()
     }
     
     /**
@@ -55,11 +55,8 @@ class MenuController {
      Handles updating the menu when a touch ends.
      */
     public func touchEnded() {
-        var nothingTapped: Bool = true
-        if (model.touch.tapDuration < 12) {
-            nothingTapped = !handleTapEvent()
-        }
-        if (nothingTapped) {
+        let somethingTapped: Bool = handleTapEvent()
+        if (!somethingTapped) {
             calculateTapVelocity()
         }
     }
@@ -116,18 +113,85 @@ class MenuController {
      - Returns: Whether any buttons or other interactable objects were tapped.
      */
     private func handleTapEvent() -> Bool {
-        // If hamburger menu open
-        //  Check close hamburger menu
-        //  Check github link
-        //  Check twitter link
-        //  Check music link
-        //  Check sound control slider
-        //  Check music control slider
-        // Else hamburger menu closed
-        //  Check open hamburger menu
-        //  Check current level/random selection circle
-        //  Check side levels if tapVelocity is 0, move level to center
+        var somethingTapped: Bool = false
+        if (model.menu.hamburgerMenuOpen) {
+            somethingTapped = handleHamburgerMenuTapEvent()
+        } else {
+            somethingTapped = handleMainMenuTapEvent()
+        }
+        return somethingTapped
+    }
+    
+    /**
+     Checks the tap event on the hamburger menu to see if any buttons or other interactable objects were tapped and handles logic for if they were tapped.
+     - Returns: Whether any buttons or other interactable objects were tapped.
+     */
+    private func handleHamburgerMenuTapEvent() -> Bool {
+        // Check close hamburger menu
+        // Check github link
+        // Check twitter link
+        // Check music link
+        // Check sound control slider
+        // Check music control slider
         return false
+    }
+    
+    /**
+     Checks the tap event on the main menu to see if any buttons or other interactable objects were tapped and handles logic for if they were tapped.
+     - Returns: Whether any buttons or other interactable objects were tapped.
+     */
+    private func handleMainMenuTapEvent() -> Bool {
+        // Check open hamburger menu
+        if (model.touch.tapDuration < 12 && model.menu.tapVelocity == 0) {
+            let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+            if (tappedInCircle(model.menu.selectionCircleX, model.menu.selectionCircleY, model.menu.selectionCircleRadius)) {
+                if (Int(round(viewingLevel)) == Constants.levels + 1) {
+                    // Random level
+                } else if (Int(round(viewingLevel)) != 0) {
+                    // Play selected level
+                }
+                return true
+            }
+            // Check tapping side levels
+            if (tappedInCircle(model.menu.selectionCircleX - (model.menu.levelSpacing * 2), model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2)) {
+                if (round(viewingLevel) > 2) {
+                    model.menu.tapVelocity = -model.menu.jumpTwoLevelsVelocity
+                    return true
+                }
+            }
+            if (tappedInCircle(model.menu.selectionCircleX - model.menu.levelSpacing, model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2)) {
+                if (round(viewingLevel) > 1) {
+                    model.menu.tapVelocity = -model.menu.jumpOneLevelVelocity
+                    return true
+                }
+            }
+            if (tappedInCircle(model.menu.selectionCircleX + model.menu.levelSpacing, model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2)) {
+                if (Int(round(viewingLevel)) < Constants.levels + 1) {
+                    model.menu.tapVelocity = model.menu.jumpOneLevelVelocity
+                    return true
+                }
+            }
+            if (tappedInCircle(model.menu.selectionCircleX + (model.menu.levelSpacing * 2), model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2)) {
+                if (Int(round(viewingLevel)) < Constants.levels) {
+                    model.menu.tapVelocity = model.menu.jumpTwoLevelsVelocity
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    /**
+     Checks whether a tap began and ended within a given circle.
+     - Parameter circleX: The center of the circle X coordinate.
+     - Parameter circleY: The center of the circle Y coordinate.
+     - Parameter circleRadius: The circle radius.
+     - Returns: Whether the tap began and ended within the circle.
+     */
+    private func tappedInCircle(_ circleX: Int, _ circleY: Int, _ circleRadius: Int) -> Bool {
+        let startedInCircle:Bool = Utils.distanceBetweenPoints(x1: Double(circleX), y1: Double(circleY), x2: Double(model.touch.downX), y2: Double(model.touch.downY)) < Double(circleRadius)
+        let endedInCircle:Bool = Utils.distanceBetweenPoints(x1: Double(circleX), y1: Double(circleY), x2: Double(model.touch.x), y2: Double(model.touch.y)) < Double(circleRadius)
+        return startedInCircle && endedInCircle
     }
     
     /**
@@ -191,9 +255,9 @@ class MenuController {
     }
     
     /**
-     Calculates and assigns the menu view positions based on the screen dimensions.
+     Assigns menu values based on the screen dimensions.
      */
-    private func calculateMenuPositions() {
+    private func setScreenSizeValues() {
         model.menu.titleX = Int(CGFloat(model.screenWidth) * Constants.menuTitleXScreens)
         model.menu.titleY = Int(CGFloat(model.screenHeight) * Constants.menuTitleYScreens)
         model.menu.selectionCircleX = Int(CGFloat(model.screenWidth) * Constants.menuSelectionCircleXScreens)
@@ -212,5 +276,29 @@ class MenuController {
             model.menu.levelY.append(levelTopLeftY)
             model.menu.levelTransparency.append(0)
         }
+        setLevelJumpVelocities()
+    }
+    
+    /**
+     Calculates and assigns the level selection jump velocities.
+     */
+    private func setLevelJumpVelocities() {
+        var sum: Int = 0
+        var goal: Int = model.menu.levelSpacing
+        var velocity: Int = 0
+        while (sum < goal) {
+            velocity += model.menu.tapVelocityResistance
+            sum += velocity
+        }
+        velocity -= model.menu.tapVelocityResistance
+        model.menu.jumpOneLevelVelocity = velocity
+        
+        goal *= 2
+        while (sum < goal) {
+            velocity += model.menu.tapVelocityResistance
+            sum += velocity
+        }
+        velocity -= model.menu.tapVelocityResistance
+        model.menu.jumpTwoLevelsVelocity = velocity
     }
 }

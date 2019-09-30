@@ -45,9 +45,24 @@ class MenuModel {
     var tapVelocityResistance: Int!
     
     /**
+     The velocity to slide one level away from the current selection.
+     */
+    var jumpOneLevelVelocity: Int!
+    
+    /**
+     The velocity to slide two levels away from the current selection.
+     */
+    var jumpTwoLevelsVelocity: Int!
+    
+    /**
      The menu velocity per update to slide to a nearby level if not tapping or sliding already.
      */
     var idleCenteringVelocity: Int!
+    
+    /**
+     Whether the hamburger menu is open.
+     */
+    var hamburgerMenuOpen: Bool = false
     
     /**
      The title position X coordinate.
