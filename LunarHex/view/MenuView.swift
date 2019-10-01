@@ -45,6 +45,11 @@ class MenuView {
     var selectionCircle: SKShapeNode!
     
     /**
+     The array of level labels.
+     */
+    var previewBoardCircles: Array<SKShapeNode> = Array()
+    
+    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -75,6 +80,24 @@ class MenuView {
             level.fontColor = SKColor.white
             scene.addChild(level)
             levels.append(level)
+        }
+        for column in 0...Constants.boardColumns - 1 {
+            for row in 0...Constants.boardRows - 1 {
+                if (row == 5) {
+                    if (column != 1 && column != 3) {
+                        // The final row only has 2 spaces instead of 5
+                        continue
+                    }
+                }
+                let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
+                previewCircle.zPosition = 1
+                previewCircle.position = CGPoint(x: model.menu.previewBoardX + (column * model.menu.previewBoardSpacingX), y: model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY))
+                previewCircle.strokeColor = SKColor.clear
+                previewCircle.glowWidth = 0
+                previewCircle.fillColor = SKColor.red
+                scene.addChild(previewCircle)
+                previewBoardCircles.append(previewCircle)
+            }
         }
         selectionCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.selectionCircleRadius))
         selectionCircle.zPosition = 1

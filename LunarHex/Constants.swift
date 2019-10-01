@@ -24,6 +24,16 @@ class Constants {
     static let levels: Int = 30
     
     /**
+     The number of rows (and partial rows) in the game board.
+     */
+    static let boardRows: Int = 6
+    
+    /**
+     The number of columns in the game board.
+     */
+    static let boardColumns: Int = 5
+    
+    /**
      The position of the menu title in screen widths.
      */
     static let menuTitleXScreens: CGFloat = 0.5
@@ -47,6 +57,26 @@ class Constants {
      The display size divisor for calculating the menu level selection circle radius.
      */
     static let menuSelectionCircleRadiusDivisor: Double = 13
+    
+    /**
+     The top left corner position of the menu preview board in screen widths.
+     */
+    static let previewBoardXScreens: CGFloat = 0.34
+    
+    /**
+     The top left corner position of the menu preview board in screen heights.
+     */
+    static let previewBoardYScreens: CGFloat = 0.85
+    
+    /**
+     The spacing between the menu preview board circles in screen widths.
+     */
+    static let previewBoardSpacingXScreens: CGFloat = 0.08
+    
+    /**
+     The spacing between the menu preview board circles in screen heights.
+     */
+    static let previewBoardSpacingYScreens: CGFloat = 0.06
     
     /**
      The top left position of the first level label in screen heights.

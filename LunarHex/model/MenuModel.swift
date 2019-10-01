@@ -100,6 +100,26 @@ class MenuModel {
     var selectionCircleScale: CGFloat = 0
     
     /**
+     The preview board top left corner position X coordinate.
+     */
+    var previewBoardX: Int!
+    
+    /**
+     The preview board top left corner position Y coordinate.
+     */
+    var previewBoardY: Int!
+    
+    /**
+     The spacing between preview board circles in the X axis.
+     */
+    var previewBoardSpacingX: Int!
+    
+    /**
+     The spacing between preview board circles in the Y axis.
+     */
+    var previewBoardSpacingY: Int!
+    
+    /**
      The spacing between levels.
      */
     var levelSpacing: Int!
