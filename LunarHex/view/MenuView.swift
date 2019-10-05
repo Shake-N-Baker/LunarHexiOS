@@ -120,6 +120,9 @@ class MenuView {
             levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
             levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.levelTransparency[index - 1])
         }
+        for index in 0...previewBoardCircles.count - 1 {
+            previewBoardCircles[index].fillColor = model.menu.previewBoardColors[index]
+        }
         selectionCircle.strokeColor = SKColor.init(red: 168/255, green: 183/255, blue: 225/255, alpha: model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import SpriteKit
 
 /**
  The Menu Model class holds the state of the menu.
@@ -118,6 +119,11 @@ class MenuModel {
      The spacing between preview board circles in the Y axis.
      */
     var previewBoardSpacingY: Int!
+    
+    /**
+     The preview board circle colors.
+     */
+    var previewBoardColors: Array<SKColor> = Array()
     
     /**
      The spacing between levels.

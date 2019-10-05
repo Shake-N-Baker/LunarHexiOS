@@ -7,6 +7,7 @@
 //
 
 import CoreGraphics
+import SpriteKit
 
 /**
  The Menu Controller class handles input and game logic for the menu.
@@ -34,6 +35,7 @@ class MenuController {
         updateScreenOffset()
         updateSelectionCircle()
         updateTextTransparency()
+        updatePreviewBoard()
     }
     
     /**
@@ -106,6 +108,31 @@ class MenuController {
         }
         levelsFromText = CGFloat(Constants.levels + 1) - viewingLevel
         model.menu.randomTransparency = 1 - (levelsFromText / 2.5)
+    }
+    
+    /**
+     Handles updating the preview board circles.
+     */
+    private func updatePreviewBoard() {
+        let transparency: CGFloat = model.menu.selectionCircleTransparency
+        var index: Int = 0
+        for column in 0...Constants.boardColumns - 1 {
+            for row in 0...Constants.boardRows - 1 {
+                if (row == 5) {
+                    if (column != 1 && column != 3) {
+                        // The final row only has 2 spaces instead of 5
+                        continue
+                    }
+                }
+                // Tint the center red and color the rest of the spaces white
+                if (column == 2 && row == 2) {
+                    model.menu.previewBoardColors[index] = SKColor.init(red: 1, green: 146/255, blue: 146/255, alpha: transparency)
+                } else {
+                    model.menu.previewBoardColors[index] = SKColor.init(red: 1, green: 1, blue: 1, alpha: transparency)
+                }
+                index += 1
+            }
+        }
     }
     
     /**
@@ -279,6 +306,17 @@ class MenuController {
             model.menu.levelX.append(model.menu.titleX + (model.menu.levelSpacing * index))
             model.menu.levelY.append(levelTopLeftY)
             model.menu.levelTransparency.append(0)
+        }
+        for column in 0...Constants.boardColumns - 1 {
+            for row in 0...Constants.boardRows - 1 {
+                if (row == 5) {
+                    if (column != 1 && column != 3) {
+                        // The final row only has 2 spaces instead of 5
+                        continue
+                    }
+                }
+                model.menu.previewBoardColors.append(SKColor.clear)
+            }
         }
         setLevelJumpVelocities()
     }
