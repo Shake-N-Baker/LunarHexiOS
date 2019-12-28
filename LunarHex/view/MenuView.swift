@@ -13,42 +13,42 @@ import GameplayKit
  The Menu View class handles displaying the menu.
  */
 class MenuView {
-    
+
     /**
      Reference to the scene.
      */
     var scene: MainScene!
-    
+
     /**
      Reference to the main model.
      */
     var model: MainModel!
-    
+
     /**
      The menu title label.
      */
     var title: SKLabelNode!
-    
+
     /**
      The random level label.
      */
     var random: SKLabelNode!
-    
+
     /**
      The array of level labels.
      */
-    var levels: Array<SKLabelNode> = Array()
-    
+    var levels: [SKLabelNode] = Array()
+
     /**
      The level selection circle.
      */
     var selectionCircle: SKShapeNode!
-    
+
     /**
      The array of level labels.
      */
-    var previewBoardCircles: Array<SKShapeNode> = Array()
-    
+    var previewBoardCircles: [SKShapeNode] = Array()
+
     /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
@@ -83,15 +83,18 @@ class MenuView {
         }
         for column in 0...Constants.boardColumns - 1 {
             for row in 0...Constants.boardRows - 1 {
-                if (row == 5) {
-                    if (column != 1 && column != 3) {
+                if row == 5 {
+                    if column != 1 && column != 3 {
                         // The final row only has 2 spaces instead of 5
                         continue
                     }
                 }
                 let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
                 previewCircle.zPosition = 1
-                previewCircle.position = CGPoint(x: model.menu.previewBoardX + (column * model.menu.previewBoardSpacingX), y: model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY))
+                previewCircle.position = CGPoint(x: model.menu.previewBoardX +
+                    (column * model.menu.previewBoardSpacingX), y:
+                    model.menu.previewBoardY - (row *
+                    model.menu.previewBoardSpacingY))
                 previewCircle.strokeColor = SKColor.clear
                 previewCircle.glowWidth = 0
                 previewCircle.fillColor = SKColor.red
@@ -107,7 +110,7 @@ class MenuView {
         selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
     }
-    
+
     /**
      Handles updating the menu view for the current game tick.
      */
@@ -117,13 +120,17 @@ class MenuView {
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
         random.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.randomTransparency)
         for index in 1...Constants.levels {
-            levels[index - 1].position = CGPoint(x: model.menu.levelX[index - 1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
-            levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.levelTransparency[index - 1])
+            levels[index - 1].position = CGPoint(x: model.menu.levelX[index -
+                1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
+            levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue:
+                1, alpha: model.menu.levelTransparency[index - 1])
         }
         for index in 0...previewBoardCircles.count - 1 {
             previewBoardCircles[index].fillColor = model.menu.previewBoardColors[index]
         }
-        selectionCircle.strokeColor = SKColor.init(red: 168/255, green: 183/255, blue: 225/255, alpha: model.menu.selectionCircleTransparency)
+        selectionCircle.strokeColor = SKColor.init(red: 168/255, green:
+            183/255, blue: 225/255, alpha:
+            model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
     }
 }

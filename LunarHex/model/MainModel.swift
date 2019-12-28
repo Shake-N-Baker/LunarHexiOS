@@ -12,32 +12,32 @@ import CoreGraphics
  The Main Model class holds the state of the game between itself and sub models.
  */
 class MainModel {
-    
+
     /**
      Reference to the menu model.
      */
     var menu: MenuModel!
-    
+
     /**
      Reference to the touch event model.
      */
     var touch: TouchModel!
-    
+
     /**
      The screen width measured from the scene.
      */
     var screenWidth: Int!
-    
+
     /**
      The screen height measured from the scene.
      */
     var screenHeight: Int!
-    
+
     /**
      Whether the current view is of the menu, else viewing a level of the game.
      */
     var viewingMenu: Bool = true
-    
+
     /**
      Initializes the main model.
      - Parameter mainScene: Reference to the main scene.
