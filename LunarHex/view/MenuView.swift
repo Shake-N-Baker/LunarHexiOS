@@ -71,37 +71,6 @@ class MenuView {
         random.text = "RANDOM"
         random.fontColor = SKColor.white
         scene.addChild(random)
-        for index in 1...Constants.levels {
-            let level: SKLabelNode = SKLabelNode(fontNamed: "Lato-Regular")
-            level.zPosition = 1
-            level.position = CGPoint(x: model.menu.levelX[index - 1], y: model.menu.levelY[index - 1])
-            level.fontSize = 30
-            level.text = "\(index)"
-            level.fontColor = SKColor.white
-            scene.addChild(level)
-            levels.append(level)
-        }
-        for column in 0...Constants.boardColumns - 1 {
-            for row in 0...Constants.boardRows - 1 {
-                if row == 5 {
-                    if column != 1 && column != 3 {
-                        // The final row only has 2 spaces instead of 5
-                        continue
-                    }
-                }
-                let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
-                previewCircle.zPosition = 1
-                previewCircle.position = CGPoint(x: model.menu.previewBoardX +
-                    (column * model.menu.previewBoardSpacingX), y:
-                    model.menu.previewBoardY - (row *
-                    model.menu.previewBoardSpacingY))
-                previewCircle.strokeColor = SKColor.clear
-                previewCircle.glowWidth = 0
-                previewCircle.fillColor = SKColor.red
-                scene.addChild(previewCircle)
-                previewBoardCircles.append(previewCircle)
-            }
-        }
         selectionCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.selectionCircleRadius))
         selectionCircle.zPosition = 1
         selectionCircle.position = CGPoint(x: model.menu.selectionCircleX, y: model.menu.selectionCircleY)
@@ -109,6 +78,8 @@ class MenuView {
         selectionCircle.glowWidth = 1.0
         selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
+        initializeLevelLabels()
+        initializePreviewBoard()
     }
 
     /**
@@ -132,5 +103,48 @@ class MenuView {
             183/255, blue: 225/255, alpha:
             model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
+    }
+
+    /**
+     Initializes the level labels.
+     */
+    private func initializeLevelLabels() {
+        for index in 1...Constants.levels {
+            let level: SKLabelNode = SKLabelNode(fontNamed: "Lato-Regular")
+            level.zPosition = 1
+            level.position = CGPoint(x: model.menu.levelX[index - 1], y: model.menu.levelY[index - 1])
+            level.fontSize = 30
+            level.text = "\(index)"
+            level.fontColor = SKColor.white
+            scene.addChild(level)
+            levels.append(level)
+        }
+    }
+
+    /**
+     Initializes the preview board.
+     */
+    private func initializePreviewBoard() {
+        for column in 0...Constants.boardColumns - 1 {
+            for row in 0...Constants.boardRows - 1 {
+                if row == 5 {
+                    if column != 1 && column != 3 {
+                        // The final row only has 2 spaces instead of 5
+                        continue
+                    }
+                }
+                let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
+                previewCircle.zPosition = 1
+                previewCircle.position = CGPoint(x: model.menu.previewBoardX +
+                    (column * model.menu.previewBoardSpacingX), y:
+                    model.menu.previewBoardY - (row *
+                    model.menu.previewBoardSpacingY))
+                previewCircle.strokeColor = SKColor.clear
+                previewCircle.glowWidth = 0
+                previewCircle.fillColor = SKColor.red
+                scene.addChild(previewCircle)
+                previewBoardCircles.append(previewCircle)
+            }
+        }
     }
 }
