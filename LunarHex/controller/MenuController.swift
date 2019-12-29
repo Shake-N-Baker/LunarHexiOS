@@ -51,6 +51,7 @@ class MenuController {
     public func touchMoved() {
         model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
         model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
+        model.menu.viewingLevel = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
     }
 
     /**
@@ -73,6 +74,7 @@ class MenuController {
             } else {
                 slideToNearestLevel()
             }
+            model.menu.viewingLevel = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
         }
     }
 
@@ -80,13 +82,12 @@ class MenuController {
      Handles updating the selection circle of the menu.
      */
     private func updateSelectionCircle() {
-        let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
         var differenceFromCenter: Int = model.menu.screenOffset % model.menu.levelSpacing
         if differenceFromCenter > (model.menu.levelSpacing / 2) {
             differenceFromCenter -= model.menu.levelSpacing
             differenceFromCenter *= -1
         }
-        if differenceFromCenter < model.menu.selectionCircleRadius && round(viewingLevel) != 0 {
+        if differenceFromCenter < model.menu.selectionCircleRadius && round(model.menu.viewingLevel) != 0 {
             model.menu.selectionCircleTransparency = 1.0 -
                 (CGFloat(differenceFromCenter) /
                 CGFloat(model.menu.selectionCircleRadius))
@@ -104,14 +105,13 @@ class MenuController {
      Handles updating the title, levels and random text transparency.
      */
     private func updateTextTransparency() {
-        let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
-        model.menu.titleTransparency = 1 - viewingLevel
+        model.menu.titleTransparency = 1 - model.menu.viewingLevel
         var levelsFromText: CGFloat
         for index in 1...Constants.levels {
-            levelsFromText = abs(viewingLevel - CGFloat(index))
+            levelsFromText = abs(model.menu.viewingLevel - CGFloat(index))
             model.menu.levelTransparency[index - 1] = 1 - (levelsFromText / 2.5)
         }
-        levelsFromText = CGFloat(Constants.levels + 1) - viewingLevel
+        levelsFromText = CGFloat(Constants.levels + 1) - model.menu.viewingLevel
         model.menu.randomTransparency = 1 - (levelsFromText / 2.5)
     }
 
@@ -179,30 +179,29 @@ class MenuController {
     private func handleMainMenuTapEvent() -> Bool {
         // Check open hamburger menu
         if model.touch.tapDuration < 12 && model.menu.tapVelocity == 0 {
-            let viewingLevel: CGFloat = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
             if tappedInCircle(model.menu.selectionCircleX,
                 model.menu.selectionCircleY, model.menu.selectionCircleRadius) {
-                if Int(round(viewingLevel)) == Constants.levels + 1 {
+                if Int(round(model.menu.viewingLevel)) == Constants.levels + 1 {
                     // Random level
-                } else if Int(round(viewingLevel)) != 0 {
+                } else if Int(round(model.menu.viewingLevel)) != 0 {
                     // Play selected level
                 }
                 return true
             }
             // Check tapping side levels
-            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), left: 2) {
+            if tappedSideLevel(left: 2) {
                 model.menu.tapVelocity = -model.menu.jumpTwoLevelsVelocity
                 return true
             }
-            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), left: 1) {
+            if tappedSideLevel(left: 1) {
                 model.menu.tapVelocity = -model.menu.jumpOneLevelVelocity
                 return true
             }
-            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), right: 1) {
+            if tappedSideLevel(right: 1) {
                 model.menu.tapVelocity = model.menu.jumpOneLevelVelocity
                 return true
             }
-            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), right: 2) {
+            if tappedSideLevel(right: 2) {
                 model.menu.tapVelocity = model.menu.jumpTwoLevelsVelocity
                 return true
             }
@@ -212,12 +211,11 @@ class MenuController {
 
     /**
      Checks whether a tap began and ended on one of the side levels.
-     - Parameter viewingLevel: The nearest center most level in view, 0 for title, levels + 1 for random
      - Parameter left: Number of levels to the left of the current focused level
      - Parameter right: Number of levels to the right of the current focused level
      */
-    private func tappedSideLevel(viewingLevel: Int, left: Int = 0, right: Int = 0) -> Bool {
-        let sideLevel = viewingLevel + right - left
+    private func tappedSideLevel(left: Int = 0, right: Int = 0) -> Bool {
+        let sideLevel = Int(round(model.menu.viewingLevel)) + right - left
         if left != 0 {
             if tappedInCircle(model.menu.selectionCircleX - (model.menu.levelSpacing
                 * left), model.menu.selectionCircleY, model.menu.selectionCircleRadius

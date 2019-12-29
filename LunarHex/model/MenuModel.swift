@@ -26,6 +26,11 @@ class MenuModel {
     var screenOffsetRightBound: Int!
 
     /**
+     The center most level in view on the menu.
+     */
+    var viewingLevel: CGFloat = 0
+
+    /**
      The initial value of the screen offset when the tap event began.
      */
     var tapOffsetStart: Int = 0
