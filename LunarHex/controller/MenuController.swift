@@ -190,35 +190,46 @@ class MenuController {
                 return true
             }
             // Check tapping side levels
+            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), left: 2) {
+                model.menu.tapVelocity = -model.menu.jumpTwoLevelsVelocity
+                return true
+            }
+            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), left: 1) {
+                model.menu.tapVelocity = -model.menu.jumpOneLevelVelocity
+                return true
+            }
+            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), right: 1) {
+                model.menu.tapVelocity = model.menu.jumpOneLevelVelocity
+                return true
+            }
+            if tappedSideLevel(viewingLevel: Int(round(viewingLevel)), right: 2) {
+                model.menu.tapVelocity = model.menu.jumpTwoLevelsVelocity
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
+     Checks whether a tap began and ended on one of the side levels.
+     - Parameter viewingLevel: The nearest center most level in view, 0 for title, levels + 1 for random
+     - Parameter left: Number of levels to the left of the current focused level
+     - Parameter right: Number of levels to the right of the current focused level
+     */
+    private func tappedSideLevel(viewingLevel: Int, left: Int = 0, right: Int = 0) -> Bool {
+        let sideLevel = viewingLevel + right - left
+        if left != 0 {
             if tappedInCircle(model.menu.selectionCircleX - (model.menu.levelSpacing
-                * 2), model.menu.selectionCircleY, model.menu.selectionCircleRadius
+                * left), model.menu.selectionCircleY, model.menu.selectionCircleRadius
                 / 2) {
-                if round(viewingLevel) > 2 {
-                    model.menu.tapVelocity = -model.menu.jumpTwoLevelsVelocity
-                    return true
-                }
+                return 1 <= sideLevel && sideLevel <= (Constants.levels + 1)
             }
-            if tappedInCircle(model.menu.selectionCircleX - model.menu.levelSpacing,
-                model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2) {
-                if round(viewingLevel) > 1 {
-                    model.menu.tapVelocity = -model.menu.jumpOneLevelVelocity
-                    return true
-                }
-            }
-            if tappedInCircle(model.menu.selectionCircleX + model.menu.levelSpacing,
-                model.menu.selectionCircleY, model.menu.selectionCircleRadius / 2) {
-                if Int(round(viewingLevel)) < Constants.levels + 1 {
-                    model.menu.tapVelocity = model.menu.jumpOneLevelVelocity
-                    return true
-                }
-            }
+        }
+        if right != 0 {
             if tappedInCircle(model.menu.selectionCircleX + (model.menu.levelSpacing
-                * 2), model.menu.selectionCircleY, model.menu.selectionCircleRadius
+                * right), model.menu.selectionCircleY, model.menu.selectionCircleRadius
                 / 2) {
-                if Int(round(viewingLevel)) < Constants.levels {
-                    model.menu.tapVelocity = model.menu.jumpTwoLevelsVelocity
-                    return true
-                }
+                return 1 <= sideLevel && sideLevel <= (Constants.levels + 1)
             }
         }
         return false
