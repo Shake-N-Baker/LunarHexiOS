@@ -31,6 +31,11 @@ class MainScene: SKScene {
     var menuController: MenuController!
 
     /**
+     Reference to the screen size controller.
+     */
+    var screenSizeController: ScreenSizeController!
+
+    /**
      Reference to the tap event/state controller.
      */
     var tapController: TapController!
@@ -46,6 +51,7 @@ class MainScene: SKScene {
      */
     override func didMove(to view: SKView) {
         model = MainModel(self)
+        screenSizeController = ScreenSizeController(model)
         menuController = MenuController(model)
         tapController = TapController(model)
         mainView = MainView(self, model)

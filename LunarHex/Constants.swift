@@ -44,6 +44,26 @@ class Constants {
     static let menuTitleYScreens: CGFloat = 0.85
 
     /**
+     The position of the menu hamburger icon in screen widths.
+     */
+    static let menuHamburgerXScreens: CGFloat = 0.9
+
+    /**
+     The position of the menu hamburger icon in screen heights.
+     */
+    static let menuHamburgerYScreens: CGFloat = 0.86
+
+    /**
+     The width of the menu hamburger icon in screen widths.
+     */
+    static let menuHamburgerWidthScreens: CGFloat = 0.06
+
+    /**
+     The height of the menu hamburger icon in screen heights.
+     */
+    static let menuHamburgerHeightScreens: CGFloat = 0.08
+
+    /**
      The position of the menu level selection circle in screen widths.
      */
     static let menuSelectionCircleXScreens: CGFloat = 0.5

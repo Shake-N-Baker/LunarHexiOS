@@ -81,6 +81,26 @@ class MenuModel {
     var titleY: Int!
 
     /**
+     The hamburger icon position X coordinate.
+     */
+    var hamburgerX: Int!
+
+    /**
+     The hamburger icon position Y coordinate.
+     */
+    var hamburgerY: Int!
+
+    /**
+     The hamburger icon width.
+     */
+    var hamburgerWidth: Int!
+
+    /**
+     The hamburger icon height.
+     */
+    var hamburgerHeight: Int!
+
+    /**
      The level selection circle position X coordinate.
      */
     var selectionCircleX: Int!

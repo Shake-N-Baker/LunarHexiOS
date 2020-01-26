@@ -48,6 +48,11 @@ class MenuView {
      The array of level labels.
      */
     var previewBoardCircles: [SKShapeNode] = Array()
+    
+    /**
+     The hamburger menu icon.
+     */
+    var hamburgerMenu: SKShapeNode!
 
     /**
      Initializes the menu view.
@@ -80,6 +85,7 @@ class MenuView {
         scene.addChild(selectionCircle)
         initializeLevelLabels()
         initializePreviewBoard()
+        initializeHamburgerMenu()
     }
 
     /**
@@ -146,5 +152,25 @@ class MenuView {
                 previewBoardCircles.append(previewCircle)
             }
         }
+    }
+
+    /**
+     Initializes the hamburger menu icon.
+     */
+    private func initializeHamburgerMenu() {
+        hamburgerMenu = SKShapeNode()
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: 0))
+        bezierPath.move(to: CGPoint(x: 0, y: model.menu.hamburgerHeight / 2))
+        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: model.menu.hamburgerHeight / 2))
+        bezierPath.move(to: CGPoint(x: 0, y: model.menu.hamburgerHeight))
+        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: model.menu.hamburgerHeight))
+        hamburgerMenu.path = bezierPath.cgPath
+        hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
+        hamburgerMenu.strokeColor = SKColor.white
+        hamburgerMenu.lineWidth = 6
+        hamburgerMenu.lineCap = CGLineCap.round
+        scene.addChild(hamburgerMenu)
     }
 }

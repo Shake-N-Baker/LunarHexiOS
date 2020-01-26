@@ -13,6 +13,7 @@
 		2108EDEA22239EB2008A2D3A /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDE922239EB2008A2D3A /* MenuController.swift */; };
 		2108EDEC2223A41B008A2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDEB2223A41B008A2D3A /* Constants.swift */; };
 		2108EDEE223F35AA008A2D3A /* TouchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDED223F35AA008A2D3A /* TouchModel.swift */; };
+		2135602D23DD4E8C004C42CC /* ScreenSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */; };
 		215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215934E921EC1E5F002BD35A /* MainModel.swift */; };
 		215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EB21F15937002BD35A /* Lato-Regular.ttf */; };
 		215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EE21F15A90002BD35A /* Lato-Heavy.ttf */; };
@@ -34,6 +35,7 @@
 		2108EDE922239EB2008A2D3A /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2108EDEB2223A41B008A2D3A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2108EDED223F35AA008A2D3A /* TouchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchModel.swift; sourceTree = "<group>"; };
+		2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeController.swift; sourceTree = "<group>"; };
 		215934E921EC1E5F002BD35A /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		215934EB21F15937002BD35A /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		215934EE21F15A90002BD35A /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				2108EDE3221A59EC008A2D3A /* MainScene.swift */,
 				2108EDE922239EB2008A2D3A /* MenuController.swift */,
 				2185DEB523385CB6003DB3D8 /* TapController.swift */,
+				2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,
 				2108EDE8221D06FC008A2D3A /* MenuModel.swift in Sources */,
+				2135602D23DD4E8C004C42CC /* ScreenSizeController.swift in Sources */,
 				2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */,
 				2108EDE4221A59EC008A2D3A /* MainScene.swift in Sources */,
 				215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */,
