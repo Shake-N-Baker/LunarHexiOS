@@ -48,11 +48,11 @@ class MenuView {
      The array of level labels.
      */
     var previewBoardCircles: [SKShapeNode] = Array()
-    
+
     /**
      The hamburger menu icon.
      */
-    var hamburgerMenu: SKShapeNode!
+    var hamburgerMenu: SKSpriteNode!
 
     /**
      Initializes the menu view.
@@ -158,19 +158,35 @@ class MenuView {
      Initializes the hamburger menu icon.
      */
     private func initializeHamburgerMenu() {
-        hamburgerMenu = SKShapeNode()
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 0, y: 0))
-        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: 0))
-        bezierPath.move(to: CGPoint(x: 0, y: model.menu.hamburgerHeight / 2))
-        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: model.menu.hamburgerHeight / 2))
-        bezierPath.move(to: CGPoint(x: 0, y: model.menu.hamburgerHeight))
-        bezierPath.addLine(to: CGPoint(x: model.menu.hamburgerWidth, y: model.menu.hamburgerHeight))
-        hamburgerMenu.path = bezierPath.cgPath
+        let renderer = UIGraphicsImageRenderer(
+            size: CGSize(width: model.menu.hamburgerWidth + (model.drawPaddingX * 2),
+                         height: model.menu.hamburgerHeight + (model.drawPaddingY * 2)))
+        let image = renderer.image { (context) in
+            context.cgContext.setStrokeColor(SKColor.white.cgColor)
+            context.cgContext.setLineWidth(6)
+            context.cgContext.setLineCap(CGLineCap.round)
+
+            let left: Int = 0
+            let right: Int = model.menu.hamburgerWidth
+            let top: Int = 0
+            let middle: Int = (model.menu.hamburgerHeight / 2)
+            let bottom: Int = model.menu.hamburgerHeight
+
+            context.cgContext.translateBy(x: CGFloat(model.drawPaddingX!), y: CGFloat(model.drawPaddingY!))
+
+            context.cgContext.move(to: CGPoint(x: left, y: top))
+            context.cgContext.addLine(to: CGPoint(x: right, y: top))
+            context.cgContext.move(to: CGPoint(x: left, y: middle))
+            context.cgContext.addLine(to: CGPoint(x: right, y: middle))
+            context.cgContext.move(to: CGPoint(x: left, y: bottom))
+            context.cgContext.addLine(to: CGPoint(x: right, y: bottom))
+
+            context.cgContext.drawPath(using: CGPathDrawingMode.stroke)
+        }
+        let texture = SKTexture(image: image)
+
+        hamburgerMenu = SKSpriteNode(texture: texture)
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
-        hamburgerMenu.strokeColor = SKColor.white
-        hamburgerMenu.lineWidth = 6
-        hamburgerMenu.lineCap = CGLineCap.round
         scene.addChild(hamburgerMenu)
     }
 }

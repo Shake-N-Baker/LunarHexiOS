@@ -34,6 +34,16 @@ class MainModel {
     var screenHeight: Int!
 
     /**
+     The padding to put around drawn textures so they don't clip at the edges.
+     */
+    var drawPaddingX: Int!
+
+    /**
+     The padding to put around drawn textures so they don't clip at the edges.
+     */
+    var drawPaddingY: Int!
+
+    /**
      Whether the current view is of the menu, else viewing a level of the game.
      */
     var viewingMenu: Bool = true

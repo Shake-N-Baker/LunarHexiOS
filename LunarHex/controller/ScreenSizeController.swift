@@ -24,7 +24,16 @@ class ScreenSizeController {
      */
     public init(_ mainModel: MainModel) {
         model = mainModel
+        setDrawPaddingValues()
         setScreenSizeMenuValues()
+    }
+
+    /**
+     Calculates and assigns the draw padding amounts based on the screen dimensions.
+     */
+    private func setDrawPaddingValues() {
+        model.drawPaddingX = Int(CGFloat(model.screenWidth) * Constants.drawPaddingXScreens)
+        model.drawPaddingY = Int(CGFloat(model.screenHeight) * Constants.drawPaddingYScreens)
     }
 
     /**
@@ -134,8 +143,8 @@ class ScreenSizeController {
      Calculates and assigns the hamburger icon values based on the screen dimensions.
      */
     private func setHamburgerIconValues() {
-        model.menu.hamburgerX = Int(CGFloat(model.screenWidth) * Constants.menuHamburgerXScreens)
-        model.menu.hamburgerY = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerYScreens)
+        model.menu.hamburgerX = Int(CGFloat(model.screenWidth) * Constants.menuHamburgerXScreens) - model.drawPaddingX
+        model.menu.hamburgerY = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerYScreens) + model.drawPaddingY
         model.menu.hamburgerWidth = Int(CGFloat(model.screenWidth) * Constants.menuHamburgerWidthScreens)
         model.menu.hamburgerHeight = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerHeightScreens)
     }

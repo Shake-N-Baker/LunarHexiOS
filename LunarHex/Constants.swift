@@ -34,6 +34,16 @@ class Constants {
     static let boardColumns: Int = 5
 
     /**
+     The padding in screen widths to put around drawn textures so they don't clip at the edges.
+     */
+    static let drawPaddingXScreens: CGFloat = 0.01
+
+    /**
+     The padding in screen heights to put around drawn textures so they don't clip at the edges.
+     */
+    static let drawPaddingYScreens: CGFloat = 0.01
+
+    /**
      The position of the menu title in screen widths.
      */
     static let menuTitleXScreens: CGFloat = 0.5
