@@ -141,10 +141,15 @@ class MenuView {
                 }
                 let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
                 previewCircle.zPosition = 1
+                var yPosition: Int = 0
+                if column % 2 == 0 {
+                    yPosition = model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY)
+                } else {
+                    yPosition = model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY)
+                        + Int(model.menu.previewBoardSpacingY / 2)
+                }
                 previewCircle.position = CGPoint(x: model.menu.previewBoardX +
-                    (column * model.menu.previewBoardSpacingX), y:
-                    model.menu.previewBoardY - (row *
-                    model.menu.previewBoardSpacingY))
+                    (column * model.menu.previewBoardSpacingX), y: yPosition)
                 previewCircle.strokeColor = SKColor.clear
                 previewCircle.glowWidth = 0
                 previewCircle.fillColor = SKColor.red
@@ -158,10 +163,10 @@ class MenuView {
      Initializes the hamburger menu icon.
      */
     private func initializeHamburgerMenu() {
-        let renderer = UIGraphicsImageRenderer(
+        let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
             size: CGSize(width: model.menu.hamburgerWidth + (model.drawPaddingX * 2),
                          height: model.menu.hamburgerHeight + (model.drawPaddingY * 2)))
-        let image = renderer.image { (context) in
+        let image: UIImage = renderer.image { (context) in
             context.cgContext.setStrokeColor(SKColor.white.cgColor)
             context.cgContext.setLineWidth(6)
             context.cgContext.setLineCap(CGLineCap.round)
@@ -183,7 +188,7 @@ class MenuView {
 
             context.cgContext.drawPath(using: CGPathDrawingMode.stroke)
         }
-        let texture = SKTexture(image: image)
+        let texture: SKTexture = SKTexture(image: image)
 
         hamburgerMenu = SKSpriteNode(texture: texture)
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)

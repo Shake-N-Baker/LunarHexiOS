@@ -118,7 +118,14 @@ class MenuController {
      Handles updating the preview board circles.
      */
     private func updatePreviewBoard() {
-        let transparency: CGFloat = model.menu.selectionCircleTransparency
+        let level: Int = Int(round(model.menu.viewingLevel))
+        let transparency: CGFloat
+        if 1 <= level && level <= Constants.levels {
+            transparency = model.menu.selectionCircleTransparency
+        } else {
+            transparency = 0
+        }
+
         var index: Int = 0
         for column in 0...Constants.boardColumns - 1 {
             for row in 0...Constants.boardRows - 1 {
