@@ -17,6 +17,10 @@
 		215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215934E921EC1E5F002BD35A /* MainModel.swift */; };
 		215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EB21F15937002BD35A /* Lato-Regular.ttf */; };
 		215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EE21F15A90002BD35A /* Lato-Heavy.ttf */; };
+		215BD3E0240B761C006782B9 /* BoardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3DF240B761C006782B9 /* BoardController.swift */; };
+		215BD3E6240B7AAE006782B9 /* MainBoards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 215BD3E5240B7AAE006782B9 /* MainBoards.txt */; };
+		215BD3E8240B7AC6006782B9 /* RandomBoards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 215BD3E7240B7AC6006782B9 /* RandomBoards.txt */; };
+		215BD3EA240CB4EF006782B9 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3E9240CB4EF006782B9 /* BoardModel.swift */; };
 		2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB523385CB6003DB3D8 /* TapController.swift */; };
 		2185DEB8233C68E3003DB3D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB7233C68E3003DB3D8 /* Utils.swift */; };
 		2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190C17521DDC9A90017726B /* AppDelegate.swift */; };
@@ -39,6 +43,10 @@
 		215934E921EC1E5F002BD35A /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		215934EB21F15937002BD35A /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		215934EE21F15A90002BD35A /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		215BD3DF240B761C006782B9 /* BoardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardController.swift; sourceTree = "<group>"; };
+		215BD3E5240B7AAE006782B9 /* MainBoards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MainBoards.txt; sourceTree = "<group>"; };
+		215BD3E7240B7AC6006782B9 /* RandomBoards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = RandomBoards.txt; sourceTree = "<group>"; };
+		215BD3E9240CB4EF006782B9 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		2185DEB523385CB6003DB3D8 /* TapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapController.swift; sourceTree = "<group>"; };
 		2185DEB7233C68E3003DB3D8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2190C17221DDC9A90017726B /* LunarHex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarHex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +77,7 @@
 				215934E921EC1E5F002BD35A /* MainModel.swift */,
 				2108EDE7221D06FC008A2D3A /* MenuModel.swift */,
 				2108EDED223F35AA008A2D3A /* TouchModel.swift */,
+				215BD3E9240CB4EF006782B9 /* BoardModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -89,6 +98,7 @@
 				2108EDE922239EB2008A2D3A /* MenuController.swift */,
 				2185DEB523385CB6003DB3D8 /* TapController.swift */,
 				2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */,
+				215BD3DF240B761C006782B9 /* BoardController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -100,6 +110,23 @@
 				215934EE21F15A90002BD35A /* Lato-Heavy.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		215BD3E1240B7917006782B9 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				215BD3E2240B7922006782B9 /* boards */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		215BD3E2240B7922006782B9 /* boards */ = {
+			isa = PBXGroup;
+			children = (
+				215BD3E5240B7AAE006782B9 /* MainBoards.txt */,
+				215BD3E7240B7AC6006782B9 /* RandomBoards.txt */,
+			);
+			path = boards;
 			sourceTree = "<group>";
 		};
 		2190C16921DDC9A90017726B = {
@@ -121,6 +148,7 @@
 		2190C17421DDC9A90017726B /* LunarHex */ = {
 			isa = PBXGroup;
 			children = (
+				215BD3E1240B7917006782B9 /* resources */,
 				215934ED21F159F1002BD35A /* fonts */,
 				215934E821EC1D09002BD35A /* controller */,
 				215934E721EC1D04002BD35A /* view */,
@@ -200,9 +228,11 @@
 			files = (
 				215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */,
 				2190C18121DDC9A90017726B /* Main.storyboard in Resources */,
+				215BD3E8240B7AC6006782B9 /* RandomBoards.txt in Resources */,
 				2190C17821DDC9A90017726B /* GameScene.sks in Resources */,
 				215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */,
 				2190C18321DDC9AB0017726B /* Assets.xcassets in Resources */,
+				215BD3E6240B7AAE006782B9 /* MainBoards.txt in Resources */,
 				2190C18621DDC9AB0017726B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +266,8 @@
 			files = (
 				2108EDEA22239EB2008A2D3A /* MenuController.swift in Sources */,
 				2190C17C21DDC9A90017726B /* MainView.swift in Sources */,
+				215BD3E0240B761C006782B9 /* BoardController.swift in Sources */,
+				215BD3EA240CB4EF006782B9 /* BoardModel.swift in Sources */,
 				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,
 				2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,

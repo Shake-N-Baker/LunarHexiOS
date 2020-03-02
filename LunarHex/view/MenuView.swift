@@ -141,15 +141,15 @@ class MenuView {
                 }
                 let previewCircle: SKShapeNode = SKShapeNode(circleOfRadius: 10)
                 previewCircle.zPosition = 1
-                var yPosition: Int = 0
+                let xPosition: Int = model.menu.previewBoardX + (column * model.menu.previewBoardSpacingX)
+                let yPosition: Int
                 if column % 2 == 0 {
                     yPosition = model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY)
                 } else {
                     yPosition = model.menu.previewBoardY - (row * model.menu.previewBoardSpacingY)
                         + Int(model.menu.previewBoardSpacingY / 2)
                 }
-                previewCircle.position = CGPoint(x: model.menu.previewBoardX +
-                    (column * model.menu.previewBoardSpacingX), y: yPosition)
+                previewCircle.position = CGPoint(x: xPosition, y: yPosition)
                 previewCircle.strokeColor = SKColor.clear
                 previewCircle.glowWidth = 0
                 previewCircle.fillColor = SKColor.red

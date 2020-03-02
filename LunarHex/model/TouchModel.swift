@@ -39,12 +39,12 @@ class TouchModel {
     var tapping: Bool = false
 
     /**
-     Tracks how long the tap event has gone on
+     Tracks how long the tap event has gone on.
      */
     var tapDuration: Int = 0
 
     /**
-     Tracks how long the tap event has gone on
+     Tracks the x position of the tap event over time.
      */
     var tapPathX: [Int] = Array(repeating: 0, count: 15)
 

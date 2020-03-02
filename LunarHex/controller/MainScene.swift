@@ -41,6 +41,11 @@ class MainScene: SKScene {
     var tapController: TapController!
 
     /**
+     Reference to the board controller.
+     */
+    var boardController: BoardController!
+
+    /**
      The next time threshold for the game to update.
      */
     var nextUpdateTime: TimeInterval!
@@ -52,6 +57,7 @@ class MainScene: SKScene {
     override func didMove(to view: SKView) {
         model = MainModel(self)
         screenSizeController = ScreenSizeController(model)
+        boardController = BoardController(model)
         menuController = MenuController(model)
         tapController = TapController(model)
         mainView = MainView(self, model)
