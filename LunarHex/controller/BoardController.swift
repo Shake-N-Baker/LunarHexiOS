@@ -24,6 +24,33 @@ class BoardController {
      */
     public init(_ mainModel: MainModel) {
         model = mainModel
+        setMainBoards()
+    }
+
+    /**
+     Returns the initial board state of the given level.
+     - Parameter level: The desired level, 0 indexed, to retrieve initial board state.
+     - Returns: The initial board state of the level.
+     */
+    public func getInitialBoardState(level: Int) -> BoardStateModel {
+        let boardState: BoardStateModel = BoardStateModel()
+        let boardString: String = model.board.mainBoardsCompressed[level]
+        let solutionMovesString: String = boardString[0]
+        let solutionMoves: Int = Int(solutionMovesString, radix: 36) ?? 0
+        let piecePositionString: String = boardString[solutionMoves + 1 ..< boardString.count]
+        boardState.totalPieces = piecePositionString.count
+        for index in 0 ..< piecePositionString.count {
+            let boardIndex: Int = Int(piecePositionString[index], radix: 36) ?? 0
+            boardState.pieces[index].x = convertBoardIndexToX(boardIndex)
+            boardState.pieces[index].y = convertBoardIndexToY(boardIndex)
+        }
+        return boardState
+    }
+
+    /**
+     Reads the main boards file and stores the values for later use.
+     */
+    private func setMainBoards() {
         if let filepath = Bundle.main.path(forResource: "MainBoards", ofType: "txt") {
             do {
                 let content: String = try String(contentsOfFile: filepath)
@@ -36,6 +63,56 @@ class BoardController {
             } catch {
                 print("Main boards content could not be loaded!")
             }
+        }
+    }
+
+    /**
+     Converts the board index into the board x position.
+
+     The following is a rough visual representation of the board indicies:
+     ```
+     00 01 02 03 04
+     05 06 07 08 09
+     10 11 12 13 14
+     15 16 17 18 19
+     20 21 22 23 24
+     xx 25 xx 26 xx
+     ```
+     - Parameter index: The board index 0-26.
+     - Returns: The board x coordinate of the given board index.
+     */
+    private func convertBoardIndexToX(_ index: Int) -> Int {
+        switch index {
+        case 25:
+            return 1
+        case 26:
+            return 3
+        default:
+            return index % 5
+        }
+    }
+
+    /**
+     Converts the board index into the board y position.
+
+     The following is a rough visual representation of the board indicies:
+     ```
+     00 01 02 03 04
+     05 06 07 08 09
+     10 11 12 13 14
+     15 16 17 18 19
+     20 21 22 23 24
+     xx 25 xx 26 xx
+     ```
+     - Parameter index: The board index 0-26.
+     - Returns: The board y coordinate of the given board index.
+     */
+    private func convertBoardIndexToY(_ index: Int) -> Int {
+        switch index {
+        case 25, 26:
+            return 5
+        default:
+            return index / 5
         }
     }
 }

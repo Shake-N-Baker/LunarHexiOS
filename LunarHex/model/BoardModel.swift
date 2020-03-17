@@ -17,14 +17,14 @@ class BoardModel {
      The main list of boards used as levels where the first index represents the first level and
      second index represents the second level and so on.
      
-     * Each board is stored in Base36 compressed string format.
+     * Each board is stored in Base62 compressed string format, 0-9, a-z, A-Z.
      * The first character with value _m_ represents the number of optimal moves to
        solve the board.
      * All boards are optimally solvable in at least 20 moves.
      * The next _m_ characters represent a single move in an optimal solution for the
        board.
      * Each move is stored as a number where the first 6 values represent the red piece
-       moving in one of the 6 possible directions, i.e. 0 = red moves up.
+       moving in one of the 6 possible directions, for instance 0 = red moves up.
      * The next 6 values represent the blue piece then the following pairs of 6 for green,
        yellow, orange and purple.
      * Finally the starting positions of each piece is represented by the final 2 to 6
