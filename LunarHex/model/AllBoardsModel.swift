@@ -1,5 +1,5 @@
 //
-//  BoardModel.swift
+//  AllBoardsModel.swift
 //  LunarHex
 //
 //  Created by Ian Baker on 3/1/20.
@@ -9,9 +9,9 @@
 import Foundation
 
 /**
- The Board Model class holds the list of playable boards.
+ All Boards Model class holds the list of playable boards.
  */
-class BoardModel {
+class AllBoardsModel {
 
     /**
      The main list of boards used as levels where the first index represents the first level and
@@ -40,7 +40,12 @@ class BoardModel {
     var mainBoardsCompressed: [String] = Array()
 
     /**
-     Initializes the touch model.
+     The main list of boards used as levels in their initial state.
+     */
+    var mainBoards: [BoardStateModel] = Array()
+
+    /**
+     Initializes the model holding all boards.
      */
     public init() {
     }

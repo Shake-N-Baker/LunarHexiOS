@@ -24,9 +24,9 @@ class MainModel {
     var touch: TouchModel!
 
     /**
-     Reference to the board model.
+     Reference to the model holding all boards.
      */
-    var board: BoardModel!
+    var board: AllBoardsModel!
 
     /**
      The screen width measured from the scene.
@@ -58,7 +58,7 @@ class MainModel {
      - Parameter mainScene: Reference to the main scene.
      */
     public init(_ mainScene: MainScene) {
-        board = BoardModel()
+        board = AllBoardsModel()
         menu = MenuModel()
         touch = TouchModel()
         screenWidth = Int(mainScene.size.width)

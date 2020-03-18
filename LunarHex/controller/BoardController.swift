@@ -28,26 +28,6 @@ class BoardController {
     }
 
     /**
-     Returns the initial board state of the given level.
-     - Parameter level: The desired level, 0 indexed, to retrieve initial board state.
-     - Returns: The initial board state of the level.
-     */
-    public func getInitialBoardState(level: Int) -> BoardStateModel {
-        let boardState: BoardStateModel = BoardStateModel()
-        let boardString: String = model.board.mainBoardsCompressed[level]
-        let solutionMovesString: String = boardString[0]
-        let solutionMoves: Int = Int(solutionMovesString, radix: 36) ?? 0
-        let piecePositionString: String = boardString[solutionMoves + 1 ..< boardString.count]
-        boardState.totalPieces = piecePositionString.count
-        for index in 0 ..< piecePositionString.count {
-            let boardIndex: Int = Int(piecePositionString[index], radix: 36) ?? 0
-            boardState.pieces[index].x = convertBoardIndexToX(boardIndex)
-            boardState.pieces[index].y = convertBoardIndexToY(boardIndex)
-        }
-        return boardState
-    }
-
-    /**
      Reads the main boards file and stores the values for later use.
      */
     private func setMainBoards() {
@@ -64,6 +44,33 @@ class BoardController {
                 print("Main boards content could not be loaded!")
             }
         }
+        for level in 0 ..< model.board.mainBoardsCompressed.count {
+            model.board.mainBoards.append(getInitialBoardState(level: level))
+        }
+    }
+
+    /**
+     Returns the initial board state of the given level.
+     - Parameter level: The desired level, 0 indexed, to retrieve initial board state.
+     - Returns: The initial board state of the level.
+     */
+    private func getInitialBoardState(level: Int) -> BoardStateModel {
+        let boardState: BoardStateModel = BoardStateModel()
+        let boardString: String = model.board.mainBoardsCompressed[level]
+        let solutionMovesString: String = boardString[0]
+        let solutionMoves: Int = Int(solutionMovesString, radix: 36) ?? 0
+        let piecePositionString: String = boardString[solutionMoves + 1 ..< boardString.count]
+
+        // BoardState starts with 6 pieces, remove extra
+        while boardState.pieces.count > piecePositionString.count {
+            boardState.pieces.removeLast()
+        }
+        for index in 0 ..< boardState.pieces.count {
+            let boardIndex: Int = Int(piecePositionString[index], radix: 36) ?? 0
+            boardState.pieces[index].x = convertBoardIndexToX(boardIndex)
+            boardState.pieces[index].y = convertBoardIndexToY(boardIndex)
+        }
+        return boardState
     }
 
     /**

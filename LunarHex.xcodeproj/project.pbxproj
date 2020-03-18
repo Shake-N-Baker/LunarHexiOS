@@ -20,7 +20,7 @@
 		215BD3E0240B761C006782B9 /* BoardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3DF240B761C006782B9 /* BoardController.swift */; };
 		215BD3E6240B7AAE006782B9 /* MainBoards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 215BD3E5240B7AAE006782B9 /* MainBoards.txt */; };
 		215BD3E8240B7AC6006782B9 /* RandomBoards.txt in Resources */ = {isa = PBXBuildFile; fileRef = 215BD3E7240B7AC6006782B9 /* RandomBoards.txt */; };
-		215BD3EA240CB4EF006782B9 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3E9240CB4EF006782B9 /* BoardModel.swift */; };
+		215BD3EA240CB4EF006782B9 /* AllBoardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */; };
 		215BD3EC241F265F006782B9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3EB241F265F006782B9 /* Extensions.swift */; };
 		215BD3EE242083D0006782B9 /* BoardStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3ED242083D0006782B9 /* BoardStateModel.swift */; };
 		2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB523385CB6003DB3D8 /* TapController.swift */; };
@@ -48,7 +48,7 @@
 		215BD3DF240B761C006782B9 /* BoardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardController.swift; sourceTree = "<group>"; };
 		215BD3E5240B7AAE006782B9 /* MainBoards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MainBoards.txt; sourceTree = "<group>"; };
 		215BD3E7240B7AC6006782B9 /* RandomBoards.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = RandomBoards.txt; sourceTree = "<group>"; };
-		215BD3E9240CB4EF006782B9 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoardsModel.swift; sourceTree = "<group>"; };
 		215BD3EB241F265F006782B9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		215BD3ED242083D0006782B9 /* BoardStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateModel.swift; sourceTree = "<group>"; };
 		2185DEB523385CB6003DB3D8 /* TapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapController.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 				215934E921EC1E5F002BD35A /* MainModel.swift */,
 				2108EDE7221D06FC008A2D3A /* MenuModel.swift */,
 				2108EDED223F35AA008A2D3A /* TouchModel.swift */,
-				215BD3E9240CB4EF006782B9 /* BoardModel.swift */,
+				215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */,
 				215BD3ED242083D0006782B9 /* BoardStateModel.swift */,
 			);
 			path = model;
@@ -273,7 +273,7 @@
 				2108EDEA22239EB2008A2D3A /* MenuController.swift in Sources */,
 				2190C17C21DDC9A90017726B /* MainView.swift in Sources */,
 				215BD3E0240B761C006782B9 /* BoardController.swift in Sources */,
-				215BD3EA240CB4EF006782B9 /* BoardModel.swift in Sources */,
+				215BD3EA240CB4EF006782B9 /* AllBoardsModel.swift in Sources */,
 				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,
 				2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,
