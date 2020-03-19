@@ -135,12 +135,28 @@ class MenuController {
                         continue
                     }
                 }
-                // Tint the center red and color the rest of the spaces white
-                if column == 2 && row == 2 {
-                    model.menu.previewBoardColors[index] = SKColor.init(red:
-                        1, green: 146/255, blue: 146/255, alpha: transparency)
-                } else {
-                    model.menu.previewBoardColors[index] = SKColor.init(red: 1, green: 1, blue: 1, alpha: transparency)
+
+                var noColorFound: Bool = true
+                if 1 <= level && level <= Constants.levels {
+                    for piece in model.board.mainBoards[level - 1].pieces {
+                        if piece.x == column && piece.y == row {
+                            noColorFound = false
+                            model.menu.previewBoardColors[index] =
+                                SKColor.init(red: piece.red, green: piece.green, blue: piece.blue, alpha: transparency)
+                            break
+                        }
+                    }
+                }
+
+                if noColorFound {
+                    // Tint the center red and color the rest of the spaces white
+                    if column == 2 && row == 2 {
+                        model.menu.previewBoardColors[index] = SKColor.init(red:
+                            1, green: 146/255, blue: 146/255, alpha: transparency)
+                    } else {
+                        model.menu.previewBoardColors[index] =
+                            SKColor.init(red: 1, green: 1, blue: 1, alpha: transparency)
+                    }
                 }
                 index += 1
             }

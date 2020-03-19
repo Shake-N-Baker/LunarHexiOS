@@ -26,7 +26,8 @@ class MenuModel {
     var screenOffsetRightBound: Int!
 
     /**
-     The center most level in view on the menu.
+     The center most level in view on the menu where 0 is the title,1 is the first level
+     up to 30 and 31 is the random level.
      */
     var viewingLevel: CGFloat = 0
 
