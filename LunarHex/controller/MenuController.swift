@@ -143,6 +143,7 @@ class MenuController {
                             noColorFound = false
                             model.menu.previewBoardColors[index] =
                                 SKColor.init(red: piece.red, green: piece.green, blue: piece.blue, alpha: transparency)
+                            model.menu.previewBoardCircleScale = transparency
                             break
                         }
                     }

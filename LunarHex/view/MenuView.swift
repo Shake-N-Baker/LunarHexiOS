@@ -104,6 +104,7 @@ class MenuView {
         }
         for index in 0...previewBoardCircles.count - 1 {
             previewBoardCircles[index].fillColor = model.menu.previewBoardColors[index]
+            previewBoardCircles[index].run(SKAction.scale(to: model.menu.previewBoardCircleScale, duration: 0))
         }
         selectionCircle.strokeColor = SKColor.init(red: 168/255, green:
             183/255, blue: 225/255, alpha:

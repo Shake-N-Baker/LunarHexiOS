@@ -152,6 +152,11 @@ class MenuModel {
     var previewBoardColors: [SKColor] = Array()
 
     /**
+     The preview board circle scale.
+     */
+    var previewBoardCircleScale: CGFloat = 0
+
+    /**
      The spacing between levels.
      */
     var levelSpacing: Int!
