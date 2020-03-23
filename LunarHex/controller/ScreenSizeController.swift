@@ -46,7 +46,7 @@ class ScreenSizeController {
         setPreviewBoardValues()
         setLevelLabelDimensions()
         setLevelJumpVelocities()
-        setHamburgerIconValues()
+        setMenuIconValues()
     }
 
     /**
@@ -63,9 +63,9 @@ class ScreenSizeController {
     private func setSelectionCircleValues() {
         model.menu.selectionCircleX = Int(CGFloat(model.screenWidth) * Constants.menuSelectionCircleXScreens)
         model.menu.selectionCircleY = Int(CGFloat(model.screenHeight) * Constants.menuSelectionCircleYScreens)
-        model.menu.selectionCircleRadius = Int(Utils.distanceBetweenPoints(x1: 0,
-            y1: 0, x2: Double(model.screenWidth), y2: Double(model.screenHeight)) /
-            Constants.menuSelectionCircleRadiusDivisor)
+        model.menu.selectionCircleRadius = Int(Utils.distanceBetweenPoints(x1: 0, y1: 0,
+            x2: Double(model.screenWidth) / Constants.menuSelectionCircleRadiusDivisor,
+            y2: Double(model.screenHeight)) / Constants.menuSelectionCircleRadiusDivisor)
     }
 
     /**
@@ -140,12 +140,14 @@ class ScreenSizeController {
     }
 
     /**
-     Calculates and assigns the hamburger icon values based on the screen dimensions.
+     Calculates and assigns the menu icons values based on the screen dimensions.
      */
-    private func setHamburgerIconValues() {
+    private func setMenuIconValues() {
         model.menu.hamburgerX = Int(CGFloat(model.screenWidth) * Constants.menuHamburgerXScreens) - model.drawPaddingX
         model.menu.hamburgerY = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerYScreens) + model.drawPaddingY
         model.menu.hamburgerWidth = Int(CGFloat(model.screenWidth) * Constants.menuHamburgerWidthScreens)
         model.menu.hamburgerHeight = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerHeightScreens)
+        model.menu.starWidth = Int(CGFloat(model.screenWidth) * Constants.starWidthScreens)
+        model.menu.starHeight = Int(CGFloat(model.screenHeight) * Constants.starHeightScreens)
     }
 }

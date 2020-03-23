@@ -127,6 +127,16 @@ class MenuModel {
     var selectionCircleScale: CGFloat = 0
 
     /**
+     The star icon width.
+     */
+    var starWidth: Int!
+
+    /**
+     The star icon height.
+     */
+    var starHeight: Int!
+
+    /**
      The preview board top left corner position X coordinate.
      */
     var previewBoardX: Int!

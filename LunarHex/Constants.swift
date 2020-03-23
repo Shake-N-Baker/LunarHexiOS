@@ -81,12 +81,23 @@ class Constants {
     /**
      The position of the menu level selection circle in screen heights.
      */
-    static let menuSelectionCircleYScreens: CGFloat = 0.27
+    static let menuSelectionCircleYScreens: CGFloat = 0.29
 
     /**
      The display size divisor for calculating the menu level selection circle radius.
+     Calculated as distance between 0, 0 and screenWidth, screenHeight / this.
      */
-    static let menuSelectionCircleRadiusDivisor: Double = 13
+    static let menuSelectionCircleRadiusDivisor: Double = 6
+
+    /**
+     The width of the star icon in screen widths.
+     */
+    static let starWidthScreens: CGFloat = 0.04
+
+    /**
+     The height of the star icon in screen heights.
+     */
+    static let starHeightScreens: CGFloat = 0.07
 
     /**
      The top left corner position of the menu preview board in screen widths.

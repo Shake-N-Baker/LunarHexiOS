@@ -40,6 +40,11 @@ class MenuView {
     var levels: [SKLabelNode] = Array()
 
     /**
+     The array of level stars.
+     */
+    var levelStars: [SKSpriteNode] = Array()
+
+    /**
      The level selection circle.
      */
     var selectionCircle: SKShapeNode!
@@ -84,6 +89,7 @@ class MenuView {
         selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
         initializeLevelLabels()
+        initializeLevelStars()
         initializePreviewBoard()
         initializeHamburgerMenu()
     }
@@ -96,11 +102,14 @@ class MenuView {
         title.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.titleTransparency)
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
         random.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.randomTransparency)
-        for index in 1...Constants.levels {
-            levels[index - 1].position = CGPoint(x: model.menu.levelX[index -
-                1] - model.menu.screenOffset, y: model.menu.levelY[index - 1])
-            levels[index - 1].fontColor = SKColor.init(red: 1, green: 1, blue:
-                1, alpha: model.menu.levelTransparency[index - 1])
+        for index in 0 ..< Constants.levels {
+            levels[index].position = CGPoint(x: model.menu.levelX[index] -
+                model.menu.screenOffset, y: model.menu.levelY[index])
+            levels[index].fontColor = SKColor.init(red: 1, green: 1, blue: 1,
+                alpha: model.menu.levelTransparency[index])
+            levelStars[index].position = CGPoint(x: model.menu.levelX[index] + (model.menu.starWidth / 2) -
+                model.menu.screenOffset, y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
+            levelStars[index].alpha = model.menu.levelTransparency[index]
         }
         for index in 0...previewBoardCircles.count - 1 {
             previewBoardCircles[index].fillColor = model.menu.previewBoardColors[index]
@@ -116,15 +125,29 @@ class MenuView {
      Initializes the level labels.
      */
     private func initializeLevelLabels() {
-        for index in 1...Constants.levels {
+        for index in 0 ..< Constants.levels {
             let level: SKLabelNode = SKLabelNode(fontNamed: "Lato-Regular")
             level.zPosition = 1
-            level.position = CGPoint(x: model.menu.levelX[index - 1], y: model.menu.levelY[index - 1])
+            level.position = CGPoint(x: model.menu.levelX[index], y: model.menu.levelY[index])
             level.fontSize = 30
-            level.text = "\(index)"
+            level.text = "\(index + 1)"
             level.fontColor = SKColor.white
             scene.addChild(level)
             levels.append(level)
+        }
+    }
+
+    /**
+     Initializes the level stars.
+     */
+    private func initializeLevelStars() {
+        let texture: SKTexture = drawStarTexture()
+        for index in 0 ..< Constants.levels {
+            let star: SKSpriteNode = SKSpriteNode(texture: texture)
+            star.position = CGPoint(x: model.menu.levelX[index] + (model.menu.starWidth / 2),
+                                    y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
+            scene.addChild(star)
+            levelStars.append(star)
         }
     }
 
@@ -194,5 +217,55 @@ class MenuView {
         hamburgerMenu = SKSpriteNode(texture: texture)
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
         scene.addChild(hamburgerMenu)
+    }
+
+    /**
+     Draws and returns a star in the form of a texture.
+     - Returns: A star as a texture.
+     */
+    private func drawStarTexture() -> SKTexture {
+        let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
+            size: CGSize(width: model.menu.hamburgerWidth + (model.drawPaddingX * 2),
+                         height: model.menu.hamburgerHeight + (model.drawPaddingY * 2)))
+        let image: UIImage = renderer.image { (context) in
+            context.cgContext.setStrokeColor(
+                SKColor.init(red: 89/255, green: 116/255, blue: 146/255, alpha: 128/255).cgColor)
+            context.cgContext.setFillColor(
+                SKColor.init(red: 46/255, green: 67/255, blue: 94/255, alpha: 128/255).cgColor)
+            context.cgContext.setLineWidth(1)
+            context.cgContext.setLineCap(CGLineCap.round)
+
+            let x1: Int = 0
+            let x2: Int = Int(round(0.2 * Double(model.menu.starWidth)))
+            let x3: Int = Int(round(0.3 * Double(model.menu.starWidth)))
+            let x4: Int = Int(round(0.38 * Double(model.menu.starWidth)))
+            let x5: Int = Int(round(0.5 * Double(model.menu.starWidth)))
+            let x6: Int = Int(round(0.62 * Double(model.menu.starWidth)))
+            let x7: Int = Int(round(0.7 * Double(model.menu.starWidth)))
+            let x8: Int = Int(round(0.8 * Double(model.menu.starWidth)))
+            let x9: Int = model.menu.starWidth
+            let y1: Int = 0
+            let y2: Int = Int(round(0.38 * Double(model.menu.starHeight)))
+            let y3: Int = Int(round(0.62 * Double(model.menu.starHeight)))
+            let y4: Int = Int(round(0.78 * Double(model.menu.starHeight)))
+            let y5: Int = model.menu.starHeight
+
+            context.cgContext.translateBy(x: CGFloat(model.drawPaddingX!), y: CGFloat(model.drawPaddingY!))
+
+            context.cgContext.move(to: CGPoint(x: x5, y: y1))
+            context.cgContext.addLine(to: CGPoint(x: x6, y: y2))
+            context.cgContext.addLine(to: CGPoint(x: x9, y: y2))
+            context.cgContext.addLine(to: CGPoint(x: x7, y: y3))
+            context.cgContext.addLine(to: CGPoint(x: x8, y: y5))
+            context.cgContext.addLine(to: CGPoint(x: x5, y: y4))
+            context.cgContext.addLine(to: CGPoint(x: x2, y: y5))
+            context.cgContext.addLine(to: CGPoint(x: x3, y: y3))
+            context.cgContext.addLine(to: CGPoint(x: x1, y: y2))
+            context.cgContext.addLine(to: CGPoint(x: x4, y: y2))
+            context.cgContext.closePath()
+
+            context.cgContext.drawPath(using: CGPathDrawingMode.fillStroke)
+        }
+        return SKTexture(image: image)
     }
 }

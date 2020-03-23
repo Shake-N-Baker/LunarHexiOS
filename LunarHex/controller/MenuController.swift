@@ -242,15 +242,13 @@ class MenuController {
         let sideLevel = Int(round(model.menu.viewingLevel)) + right - left
         if left != 0 {
             if tappedInCircle(model.menu.selectionCircleX - (model.menu.levelSpacing
-                * left), model.menu.selectionCircleY, model.menu.selectionCircleRadius
-                / 2) {
+                * left), model.menu.selectionCircleY, model.menu.selectionCircleRadius) {
                 return 1 <= sideLevel && sideLevel <= (Constants.levels + 1)
             }
         }
         if right != 0 {
             if tappedInCircle(model.menu.selectionCircleX + (model.menu.levelSpacing
-                * right), model.menu.selectionCircleY, model.menu.selectionCircleRadius
-                / 2) {
+                * right), model.menu.selectionCircleY, model.menu.selectionCircleRadius) {
                 return 1 <= sideLevel && sideLevel <= (Constants.levels + 1)
             }
         }
