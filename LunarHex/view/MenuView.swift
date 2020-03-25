@@ -103,12 +103,12 @@ class MenuView {
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
         random.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.randomTransparency)
         for index in 0 ..< Constants.levels {
-            levels[index].position = CGPoint(x: model.menu.levelX[index] -
-                model.menu.screenOffset, y: model.menu.levelY[index])
+            levels[index].position = CGPoint(x: model.menu.levelX[index] - model.menu.screenOffset,
+                y: model.menu.levelY[index])
             levels[index].fontColor = SKColor.init(red: 1, green: 1, blue: 1,
                 alpha: model.menu.levelTransparency[index])
-            levelStars[index].position = CGPoint(x: model.menu.levelX[index] + (model.menu.starWidth / 2) -
-                model.menu.screenOffset, y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
+            levelStars[index].position = CGPoint(x: model.menu.levelX[index] - model.menu.screenOffset,
+                y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
             levelStars[index].alpha = model.menu.levelTransparency[index]
         }
         for index in 0...previewBoardCircles.count - 1 {
@@ -141,9 +141,9 @@ class MenuView {
      Initializes the level stars.
      */
     private func initializeLevelStars() {
-        let texture: SKTexture = drawStarTexture()
+        let unfinished: SKTexture = drawUnfinishedLevelStar()
         for index in 0 ..< Constants.levels {
-            let star: SKSpriteNode = SKSpriteNode(texture: texture)
+            let star: SKSpriteNode = SKSpriteNode(texture: unfinished)
             star.position = CGPoint(x: model.menu.levelX[index] + (model.menu.starWidth / 2),
                                     y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
             scene.addChild(star)
@@ -220,18 +220,48 @@ class MenuView {
     }
 
     /**
-     Draws and returns a star in the form of a texture.
+     Draws and returns a star for a level in an unfinished state in the form of a texture.
      - Returns: A star as a texture.
      */
-    private func drawStarTexture() -> SKTexture {
+    private func drawUnfinishedLevelStar() -> SKTexture {
+        return drawStarTexture(
+            strokeColor: SKColor.init(red: 89/255, green: 116/255, blue: 146/255, alpha: 1/2).cgColor,
+            fillColor: SKColor.init(red: 46/255, green: 67/255, blue: 94/255, alpha: 1/2).cgColor)
+    }
+
+    /**
+     Draws and returns a star for a level in a cleared but not perfect state in the form of a texture.
+     - Returns: A star as a texture.
+     */
+    private func drawClearedLevelStar() -> SKTexture {
+        return drawStarTexture(
+            strokeColor: SKColor.init(red: 1, green: 1, blue: 1, alpha: 1).cgColor,
+            fillColor: SKColor.init(red: 190/255, green: 200/255, blue: 200/255, alpha: 1).cgColor)
+    }
+
+    /**
+     Draws and returns a star for a level in a perfect cleared state in the form of a texture.
+     - Returns: A star as a texture.
+     */
+    private func drawPerfectLevelStar() -> SKTexture {
+        return drawStarTexture(
+            strokeColor: SKColor.init(red: 1, green: 1, blue: 1, alpha: 1).cgColor,
+            fillColor: SKColor.init(red: 255/255, green: 215/255, blue: 45/255, alpha: 1).cgColor)
+    }
+
+    /**
+     Draws and returns a star in the form of a texture.
+     - Parameter strokeColor: The stroke color for the outside of the star.
+     - Parameter fillColor: The fill color for the inside of the star.
+     - Returns: A star as a texture.
+     */
+    private func drawStarTexture(strokeColor: CGColor, fillColor: CGColor) -> SKTexture {
         let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
-            size: CGSize(width: model.menu.hamburgerWidth + (model.drawPaddingX * 2),
-                         height: model.menu.hamburgerHeight + (model.drawPaddingY * 2)))
+            size: CGSize(width: model.menu.starWidth + (model.drawPaddingX * 2),
+                         height: model.menu.starHeight + (model.drawPaddingY * 2)))
         let image: UIImage = renderer.image { (context) in
-            context.cgContext.setStrokeColor(
-                SKColor.init(red: 89/255, green: 116/255, blue: 146/255, alpha: 128/255).cgColor)
-            context.cgContext.setFillColor(
-                SKColor.init(red: 46/255, green: 67/255, blue: 94/255, alpha: 128/255).cgColor)
+            context.cgContext.setStrokeColor(strokeColor)
+            context.cgContext.setFillColor(fillColor)
             context.cgContext.setLineWidth(1)
             context.cgContext.setLineCap(CGLineCap.round)
 
