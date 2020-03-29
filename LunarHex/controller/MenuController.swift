@@ -48,9 +48,11 @@ class MenuController {
      Handles updating the menu when a touch event changes position.
      */
     public func touchMoved() {
-        model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
-        model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
-        model.menu.viewingLevel = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+        if !model.menu.hamburgerMenuOpen {
+            model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
+            model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
+            model.menu.viewingLevel = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+        }
     }
 
     /**
@@ -58,7 +60,7 @@ class MenuController {
      */
     public func touchEnded() {
         let somethingTapped: Bool = handleTapEvent()
-        if !somethingTapped {
+        if !somethingTapped && !model.menu.hamburgerMenuOpen {
             calculateTapVelocity()
         }
     }
@@ -67,7 +69,7 @@ class MenuController {
      Handles updating the screen offset of the menu.
      */
     private func updateScreenOffset() {
-        if !model.touch.tapping {
+        if !model.touch.tapping || model.menu.hamburgerMenuOpen {
             if model.menu.tapVelocity != 0 {
                 applyTapVelocity()
             } else {

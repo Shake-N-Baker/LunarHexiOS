@@ -95,9 +95,9 @@ class MenuView {
         scene.addChild(selectionCircle)
         hamburgerMenuBackground = SKShapeNode(
             rect: CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
-        hamburgerMenuBackground.zPosition = 99
+        hamburgerMenuBackground.zPosition = 100
         hamburgerMenuBackground.strokeColor = SKColor.clear
-        hamburgerMenuBackground.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+        hamburgerMenuBackground.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 192/255)
         scene.addChild(hamburgerMenuBackground)
         initializeLevelLabels()
         initializeLevelStars()
@@ -131,9 +131,9 @@ class MenuView {
             model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
         if model.menu.hamburgerMenuOpen {
-            hamburgerMenuBackground.alpha = 1
+            hamburgerMenuBackground.isHidden = false
         } else {
-            hamburgerMenuBackground.alpha = 0
+            hamburgerMenuBackground.isHidden = true
         }
     }
 
@@ -232,6 +232,7 @@ class MenuView {
 
         hamburgerMenu = SKSpriteNode(texture: texture)
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
+        hamburgerMenu.zPosition = 101
         scene.addChild(hamburgerMenu)
     }
 
