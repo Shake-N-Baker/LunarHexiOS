@@ -60,6 +60,11 @@ class MenuView {
     var hamburgerMenu: SKSpriteNode!
 
     /**
+     The hamburger menu background.
+     */
+    var hamburgerMenuBackground: SKShapeNode!
+
+    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -88,6 +93,12 @@ class MenuView {
         selectionCircle.glowWidth = 1.0
         selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
+        hamburgerMenuBackground = SKShapeNode(
+            rect: CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
+        hamburgerMenuBackground.zPosition = 99
+        hamburgerMenuBackground.strokeColor = SKColor.clear
+        hamburgerMenuBackground.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+        scene.addChild(hamburgerMenuBackground)
         initializeLevelLabels()
         initializeLevelStars()
         initializePreviewBoard()
@@ -119,6 +130,11 @@ class MenuView {
             183/255, blue: 225/255, alpha:
             model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
+        if model.menu.hamburgerMenuOpen {
+            hamburgerMenuBackground.alpha = 1
+        } else {
+            hamburgerMenuBackground.alpha = 0
+        }
     }
 
     /**

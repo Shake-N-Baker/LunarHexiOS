@@ -185,7 +185,10 @@ class MenuController {
      - Returns: Whether any buttons or other interactable objects were tapped.
      */
     private func handleHamburgerMenuTapEvent() -> Bool {
-        // Check close hamburger menu
+        if tappedHamburgerMenu() {
+            model.menu.hamburgerMenuOpen = false
+            return true
+        }
         // Check github link
         // Check privacy policy link
         // Check twitter link
@@ -201,7 +204,10 @@ class MenuController {
      - Returns: Whether any buttons or other interactable objects were tapped.
      */
     private func handleMainMenuTapEvent() -> Bool {
-        // Check open hamburger menu
+        if tappedHamburgerMenu() {
+            model.menu.hamburgerMenuOpen = true
+            return true
+        }
         if model.touch.tapDuration < 12 && model.menu.tapVelocity == 0 {
             if tappedInCircle(model.menu.selectionCircleX,
                 model.menu.selectionCircleY, model.menu.selectionCircleRadius) {
@@ -234,9 +240,22 @@ class MenuController {
     }
 
     /**
+     Checks whether a tap began and ended on the hamburger menu icon.
+     - Returns: Whether the tap began and ended on the hamburger menu icon.
+     */
+    private func tappedHamburgerMenu() -> Bool {
+        let x: Int = model.menu.hamburgerX - (model.menu.hamburgerWidth / 2) - model.drawPaddingX
+        let y: Int = model.menu.hamburgerY - (model.menu.hamburgerHeight / 2) - model.drawPaddingY
+        let width: Int = model.menu.hamburgerWidth + (model.drawPaddingX * 2)
+        let height: Int = model.menu.hamburgerHeight + (model.drawPaddingY * 2)
+        return tappedInSquare(x, y, width, height)
+    }
+
+    /**
      Checks whether a tap began and ended on one of the side levels.
-     - Parameter left: Number of levels to the left of the current focused level
-     - Parameter right: Number of levels to the right of the current focused level
+     - Parameter left: Number of levels to the left of the current focused level.
+     - Parameter right: Number of levels to the right of the current focused level.
+     - Returns: Whether the tap began and ended on the side level.
      */
     private func tappedSideLevel(left: Int = 0, right: Int = 0) -> Bool {
         let sideLevel = Int(round(model.menu.viewingLevel)) + right - left
@@ -253,6 +272,24 @@ class MenuController {
             }
         }
         return false
+    }
+
+    /**
+     Checks whether a tap began and ended within a given square.
+     - Parameter squareX: The X coordinate of the square.
+     - Parameter squareY: The Y coordinate of the square.
+     - Parameter squareWidth: The width of the square.
+     - Parameter squareHeight: The height of the square.
+     - Returns: Whether the tap began and ended within the square.
+     */
+    private func tappedInSquare(_ squareX: Int, _ squareY: Int, _ squareWidth: Int, _ squareHeight: Int) -> Bool {
+        let startedInSquareX: Bool = squareX <= model.touch.downX && model.touch.downX <= squareX + squareWidth
+        let startedInSquareY: Bool = squareY <= model.touch.downY && model.touch.downY <= squareY + squareHeight
+        let endedInSquareX: Bool = squareX <= model.touch.x && model.touch.x <= squareX + squareWidth
+        let endedInSquareY: Bool = squareY <= model.touch.y && model.touch.y <= squareY + squareHeight
+        let startedInSquare: Bool = startedInSquareX && startedInSquareY
+        let endedInSquare: Bool = endedInSquareX && endedInSquareY
+        return startedInSquare && endedInSquare
     }
 
     /**
