@@ -62,7 +62,12 @@ class MenuView {
     /**
      The hamburger menu background.
      */
-    var hamburgerMenuBackground: SKShapeNode!
+    var hamburgerMenuBackground: SKSpriteNode!
+
+    /**
+     The stars background.
+     */
+    var starsBackground: SKSpriteNode!
 
     /**
      Initializes the menu view.
@@ -93,16 +98,12 @@ class MenuView {
         selectionCircle.glowWidth = 1.0
         selectionCircle.fillColor = SKColor.clear
         scene.addChild(selectionCircle)
-        hamburgerMenuBackground = SKShapeNode(
-            rect: CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
-        hamburgerMenuBackground.zPosition = 100
-        hamburgerMenuBackground.strokeColor = SKColor.clear
-        hamburgerMenuBackground.fillColor = SKColor.init(red: 0, green: 0, blue: 0, alpha: 192/255)
-        scene.addChild(hamburgerMenuBackground)
+        initializeStarsBackground()
         initializeLevelLabels()
         initializeLevelStars()
         initializePreviewBoard()
         initializeHamburgerMenu()
+        initializeHamburgerMenuBackground()
     }
 
     /**
@@ -234,6 +235,66 @@ class MenuView {
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
         hamburgerMenu.zPosition = 101
         scene.addChild(hamburgerMenu)
+    }
+
+    /**
+     Initializes the hamburger menu background.
+     */
+    private func initializeHamburgerMenuBackground() {
+        let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
+            size: CGSize(width: model.screenWidth,
+                         height: model.screenHeight))
+        let image: UIImage = renderer.image { (context) in
+            UIColor(red: 0, green: 0, blue: 0, alpha: 192/255).set()
+            context.fill(CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
+        }
+        let texture: SKTexture = SKTexture(image: image)
+
+        hamburgerMenuBackground = SKSpriteNode(texture: texture)
+        hamburgerMenuBackground.position = CGPoint(x: model.screenWidth / 2, y: model.screenHeight / 2)
+        hamburgerMenuBackground.zPosition = 100
+        scene.addChild(hamburgerMenuBackground)
+    }
+
+    /**
+     Initializes the stars background.
+     */
+    private func initializeStarsBackground() {
+        let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
+            size: CGSize(width: model.screenWidth,
+                         height: model.screenHeight))
+        let image: UIImage = renderer.image { (context) in
+            UIColor(red: 14/255, green: 21/255, blue: 42/255, alpha: 1).setFill()
+            context.fill(CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
+
+            UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).setFill()
+            for _ in 0 ..< 200 {
+                let size: Int = Int.random(in: 1 ... 5)
+                UIBezierPath(ovalIn: CGRect.init(x: Int.random(in: 0 ..< model.screenWidth),
+                                                 y: Int.random(in: 0 ..< model.screenHeight),
+                                                 width: size, height: size)).fill()
+            }
+            for _ in 0 ..< 50 {
+                let randomIndex: Int = Int.random(in: 0 ... 2)
+                if randomIndex == 0 {
+                    UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).setFill()
+                } else if randomIndex == 1 {
+                    UIColor(red: 200/255, green: 200/255, blue: 247/255, alpha: 0.6).setFill()
+                } else {
+                    UIColor(red: 253/255, green: 200/255, blue: 222/255, alpha: 0.6).setFill()
+                }
+                let size: Int = Int.random(in: 1 ... 5)
+                UIBezierPath(ovalIn: CGRect.init(x: Int.random(in: 0 ..< model.screenWidth),
+                                                 y: Int.random(in: 0 ..< model.screenHeight),
+                                                 width: size, height: size)).fill()
+            }
+        }
+        let texture: SKTexture = SKTexture(image: image)
+
+        starsBackground = SKSpriteNode(texture: texture)
+        starsBackground.position = CGPoint(x: model.screenWidth / 2, y: model.screenHeight / 2)
+        starsBackground.zPosition = -1
+        scene.addChild(starsBackground)
     }
 
     /**
