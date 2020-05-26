@@ -26,6 +26,7 @@ class ScreenSizeController {
         model = mainModel
         setDrawPaddingValues()
         setScreenSizeMenuValues()
+        setBackgroundValues()
     }
 
     /**
@@ -47,6 +48,16 @@ class ScreenSizeController {
         setLevelLabelDimensions()
         setLevelJumpVelocities()
         setMenuIconValues()
+    }
+
+    /**
+     Calculates and assigns the background values based on the screen dimensions and menu values.
+     */
+    private func setBackgroundValues() {
+        model.backgroundWidth = model.screenWidth +
+            ((model.menu.levelSpacing * (Constants.levels + 1)) / Constants.backgroundOffsetDampeningMagnitude)
+        model.backgroundX = model.backgroundWidth / 2
+        model.backgroundY = model.screenHeight / 2
     }
 
     /**

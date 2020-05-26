@@ -140,6 +140,11 @@ class Constants {
     static let maxTapVelocityXScreens: CGFloat = 0.08
 
     /**
+     Dampening magnitude to divide the screen offset by when translating the background on the menu.
+     */
+    static let backgroundOffsetDampeningMagnitude: Int = 10
+
+    /**
      Dampening magnitude to divide the tap velocity momentum by when a touch ends on the menu.
      */
     static let tapVelocityDampeningMagnitude: Int = 10

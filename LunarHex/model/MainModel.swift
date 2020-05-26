@@ -39,6 +39,21 @@ class MainModel {
     var screenHeight: Int!
 
     /**
+     The background x coordinate.
+     */
+    var backgroundX: Int!
+
+    /**
+     The background y coordiante.
+     */
+    var backgroundY: Int!
+
+    /**
+     The background width.
+     */
+    var backgroundWidth: Int!
+
+    /**
      The padding to put around drawn textures so they don't clip at the edges.
      */
     var drawPaddingX: Int!
