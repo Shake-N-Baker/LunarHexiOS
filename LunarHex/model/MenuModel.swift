@@ -16,6 +16,11 @@ import SpriteKit
 class MenuModel {
 
     /**
+     Reference to the hamburger menu model.
+     */
+    var hamburgerMenu: HamburgerMenuModel!
+
+    /**
      The translation magnitude between the left most point of the menu and the screen.
      */
     var screenOffset: Int = 0
@@ -210,5 +215,6 @@ class MenuModel {
      Initializes the menu model.
      */
     public init() {
+        hamburgerMenu = HamburgerMenuModel()
     }
 }

@@ -25,6 +25,11 @@ class MenuView {
     var model: MainModel!
 
     /**
+     Reference to the view in charge of displaying the hamburger menu.
+     */
+    var hamburgerMenuView: HamburgerMenuView!
+
+    /**
      The menu title label.
      */
     var title: SKLabelNode!
@@ -60,11 +65,6 @@ class MenuView {
     var hamburgerMenu: SKSpriteNode!
 
     /**
-     The hamburger menu background.
-     */
-    var hamburgerMenuBackground: SKSpriteNode!
-
-    /**
      Initializes the menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -72,6 +72,7 @@ class MenuView {
     public init(_ mainScene: MainScene, _ mainModel: MainModel) {
         scene = mainScene
         model = mainModel
+        hamburgerMenuView = HamburgerMenuView(scene, model)
         title = SKLabelNode(fontNamed: "Lato-Heavy")
         title.zPosition = 1
         title.position = CGPoint(x: model.menu.titleX, y: model.menu.titleY)
@@ -97,13 +98,13 @@ class MenuView {
         initializeLevelStars()
         initializePreviewBoard()
         initializeHamburgerMenu()
-        initializeHamburgerMenuBackground()
     }
 
     /**
      Handles updating the menu view for the current game tick.
      */
     public func update() {
+        hamburgerMenuView.update()
         title.position = CGPoint(x: model.menu.titleX - model.menu.screenOffset, y: model.menu.titleY)
         title.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.titleTransparency)
         random.position = CGPoint(x: model.menu.randomX - model.menu.screenOffset, y: model.menu.randomY)
@@ -125,11 +126,6 @@ class MenuView {
             183/255, blue: 225/255, alpha:
             model.menu.selectionCircleTransparency)
         selectionCircle.setScale(model.menu.selectionCircleScale)
-        if model.menu.hamburgerMenuOpen {
-            hamburgerMenuBackground.isHidden = false
-        } else {
-            hamburgerMenuBackground.isHidden = true
-        }
     }
 
     /**
@@ -229,25 +225,6 @@ class MenuView {
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
         hamburgerMenu.zPosition = 101
         scene.addChild(hamburgerMenu)
-    }
-
-    /**
-     Initializes the hamburger menu background.
-     */
-    private func initializeHamburgerMenuBackground() {
-        let renderer: UIGraphicsImageRenderer = UIGraphicsImageRenderer(
-            size: CGSize(width: model.screenWidth,
-                         height: model.screenHeight))
-        let image: UIImage = renderer.image { (context) in
-            UIColor(red: 0, green: 0, blue: 0, alpha: 192/255).set()
-            context.fill(CGRect(x: 0, y: 0, width: model.screenWidth, height: model.screenHeight))
-        }
-        let texture: SKTexture = SKTexture(image: image)
-
-        hamburgerMenuBackground = SKSpriteNode(texture: texture)
-        hamburgerMenuBackground.position = CGPoint(x: model.screenWidth / 2, y: model.screenHeight / 2)
-        hamburgerMenuBackground.zPosition = 100
-        scene.addChild(hamburgerMenuBackground)
     }
 
     /**

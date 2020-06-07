@@ -74,6 +74,48 @@ class Constants {
     static let menuHamburgerHeightScreens: CGFloat = 0.08
 
     /**
+     The position of the hamburger menu header texts (audio, credits and the privacy policy and github links)
+     in screen widths.
+     */
+    static let hamburgerHeaderTextXScreens: CGFloat = 0.08
+
+    /**
+     The position of the hamburger menu texts (sound, music, created by, follow me, music by, inspired by)
+     in screen widths.
+     */
+    static let hamburgerTextXScreens: CGFloat = 0.12
+
+    /**
+     The position of the hamburger menu audio label in screen heights.
+     */
+    static let hamburgerAudioYScreens: CGFloat = 0.86
+
+    /**
+     The position of the hamburger menu sound label in screen heights.
+     */
+    static let hamburgerSoundYScreens: CGFloat = 0.79
+
+    /**
+     The position of the hamburger menu music label in screen heights.
+     */
+    static let hamburgerMusicYScreens: CGFloat = 0.68
+
+    /**
+     The position of the hamburger menu privacy policy link in screen heights.
+     */
+    static let hamburgerPrivacyPolicyYScreens: CGFloat = 0.56
+
+    /**
+     The position of the hamburger menu credits label in screen heights.
+     */
+    static let hamburgerCreditsYScreens: CGFloat = 0.43
+
+    /**
+     The position of the hamburger menu github link in screen heights.
+     */
+    static let hamburgerGithubYScreens: CGFloat = 0.11
+
+    /**
      The position of the menu level selection circle in screen widths.
      */
     static let menuSelectionCircleXScreens: CGFloat = 0.5

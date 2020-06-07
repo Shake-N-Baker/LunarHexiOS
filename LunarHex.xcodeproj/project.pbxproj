@@ -14,6 +14,8 @@
 		2108EDEC2223A41B008A2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDEB2223A41B008A2D3A /* Constants.swift */; };
 		2108EDEE223F35AA008A2D3A /* TouchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2108EDED223F35AA008A2D3A /* TouchModel.swift */; };
 		2135602D23DD4E8C004C42CC /* ScreenSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */; };
+		2140B954248745FF005EE0A2 /* HamburgerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140B953248745FF005EE0A2 /* HamburgerMenuView.swift */; };
+		2140B956248CA3C1005EE0A2 /* HamburgerMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140B955248CA3C1005EE0A2 /* HamburgerMenuModel.swift */; };
 		215934EA21EC1E5F002BD35A /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215934E921EC1E5F002BD35A /* MainModel.swift */; };
 		215934EC21F15937002BD35A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EB21F15937002BD35A /* Lato-Regular.ttf */; };
 		215934EF21F15A90002BD35A /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 215934EE21F15A90002BD35A /* Lato-Heavy.ttf */; };
@@ -42,6 +44,8 @@
 		2108EDEB2223A41B008A2D3A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2108EDED223F35AA008A2D3A /* TouchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchModel.swift; sourceTree = "<group>"; };
 		2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSizeController.swift; sourceTree = "<group>"; };
+		2140B953248745FF005EE0A2 /* HamburgerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuView.swift; sourceTree = "<group>"; };
+		2140B955248CA3C1005EE0A2 /* HamburgerMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuModel.swift; sourceTree = "<group>"; };
 		215934E921EC1E5F002BD35A /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		215934EB21F15937002BD35A /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		215934EE21F15A90002BD35A /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				2108EDED223F35AA008A2D3A /* TouchModel.swift */,
 				215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */,
 				215BD3ED242083D0006782B9 /* BoardStateModel.swift */,
+				2140B955248CA3C1005EE0A2 /* HamburgerMenuModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			children = (
 				2190C17B21DDC9A90017726B /* MainView.swift */,
 				2108EDE5221D05EF008A2D3A /* MenuView.swift */,
+				2140B953248745FF005EE0A2 /* HamburgerMenuView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,
 				2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,
+				2140B954248745FF005EE0A2 /* HamburgerMenuView.swift in Sources */,
 				2108EDE8221D06FC008A2D3A /* MenuModel.swift in Sources */,
 				2135602D23DD4E8C004C42CC /* ScreenSizeController.swift in Sources */,
+				2140B956248CA3C1005EE0A2 /* HamburgerMenuModel.swift in Sources */,
 				2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */,
 				2108EDE4221A59EC008A2D3A /* MainScene.swift in Sources */,
 				215BD3EC241F265F006782B9 /* Extensions.swift in Sources */,

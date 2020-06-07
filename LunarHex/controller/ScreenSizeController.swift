@@ -48,6 +48,75 @@ class ScreenSizeController {
         setLevelLabelDimensions()
         setLevelJumpVelocities()
         setMenuIconValues()
+        setScreenSizeHamburgerMenuValues()
+    }
+
+    /**
+     Assigns hamburger menu values based on the screen dimensions.
+     */
+    private func setScreenSizeHamburgerMenuValues() {
+        setHamburgerMenuLabelValues()
+        setHamburgerMenuLinkValues()
+    }
+
+    /**
+     Assigns hamburger menu label values based on the screen dimensions.
+     */
+    private func setHamburgerMenuLabelValues() {
+        model.menu.hamburgerMenu.audioX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerHeaderTextXScreens)
+        model.menu.hamburgerMenu.audioY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerAudioYScreens)
+        model.menu.hamburgerMenu.soundX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.soundY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerSoundYScreens)
+        model.menu.hamburgerMenu.musicX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.musicY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerMusicYScreens)
+        model.menu.hamburgerMenu.creditsX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerHeaderTextXScreens)
+        model.menu.hamburgerMenu.creditsY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens)
+        model.menu.hamburgerMenu.createdByX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.createdByY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 20)
+        model.menu.hamburgerMenu.followMeX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.followMeY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 40)
+        model.menu.hamburgerMenu.musicByX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.musicByY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 60)
+        model.menu.hamburgerMenu.inspiredByX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens)
+        model.menu.hamburgerMenu.inspiredByY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 80)
+    }
+
+    /**
+     Assigns hamburger menu link values based on the screen dimensions.
+     */
+    private func setHamburgerMenuLinkValues() {
+        model.menu.hamburgerMenu.privacyPolicyX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerHeaderTextXScreens)
+        model.menu.hamburgerMenu.privacyPolicyY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerPrivacyPolicyYScreens)
+        model.menu.hamburgerMenu.twitterLinkX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens + 200)
+        model.menu.hamburgerMenu.twitterLinkY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 40)
+        model.menu.hamburgerMenu.musicLinkX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerTextXScreens + 80)
+        model.menu.hamburgerMenu.musicLinkY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerCreditsYScreens - 60)
+        model.menu.hamburgerMenu.githubLinkX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerHeaderTextXScreens)
+        model.menu.hamburgerMenu.githubLinkY = Int(CGFloat(model.screenHeight) *
+            Constants.hamburgerGithubYScreens)
     }
 
     /**
