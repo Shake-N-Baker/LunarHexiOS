@@ -63,6 +63,10 @@ class ScreenSizeController {
      Assigns hamburger menu label values based on the screen dimensions.
      */
     private func setHamburgerMenuLabelValues() {
+        let label = SKLabelNode(fontNamed: "Lato-Regular")
+        label.fontSize = 15
+        label.text = "FOLLOW ME ON TWITTER::"
+        let labelHeight: CGFloat = (label.frame.size.height * 1.1)
         model.menu.hamburgerMenu.audioX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.audioY = Int(CGFloat(model.screenHeight) *
@@ -82,37 +86,44 @@ class ScreenSizeController {
         model.menu.hamburgerMenu.createdByX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerTextXScreens)
         model.menu.hamburgerMenu.createdByY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 20)
+            Constants.hamburgerCreditsYScreens - labelHeight)
         model.menu.hamburgerMenu.followMeX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerTextXScreens)
         model.menu.hamburgerMenu.followMeY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 40)
+            Constants.hamburgerCreditsYScreens - (labelHeight * 2))
         model.menu.hamburgerMenu.musicByX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerTextXScreens)
         model.menu.hamburgerMenu.musicByY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 60)
+            Constants.hamburgerCreditsYScreens - (labelHeight * 3))
         model.menu.hamburgerMenu.inspiredByX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerTextXScreens)
         model.menu.hamburgerMenu.inspiredByY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 80)
+            Constants.hamburgerCreditsYScreens - (labelHeight * 4))
     }
 
     /**
      Assigns hamburger menu link values based on the screen dimensions.
      */
     private func setHamburgerMenuLinkValues() {
+        let label = SKLabelNode(fontNamed: "Lato-Regular")
+        label.fontSize = 15
+        label.text = "FOLLOW ME ON TWITTER::"
+        let followMeWidth: CGFloat = label.frame.size.width
+        let labelHeight: CGFloat = (label.frame.size.height * 1.1)
+        label.text = "MUSIC BY::"
+        let musicByWidth: CGFloat = label.frame.size.width
         model.menu.hamburgerMenu.privacyPolicyX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.privacyPolicyY = Int(CGFloat(model.screenHeight) *
             Constants.hamburgerPrivacyPolicyYScreens)
         model.menu.hamburgerMenu.twitterLinkX = Int(CGFloat(model.screenWidth) *
-            Constants.hamburgerTextXScreens + 200)
+            Constants.hamburgerTextXScreens + followMeWidth)
         model.menu.hamburgerMenu.twitterLinkY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 40)
+            Constants.hamburgerCreditsYScreens - (labelHeight * 2))
         model.menu.hamburgerMenu.musicLinkX = Int(CGFloat(model.screenWidth) *
-            Constants.hamburgerTextXScreens + 80)
+            Constants.hamburgerTextXScreens + musicByWidth)
         model.menu.hamburgerMenu.musicLinkY = Int(CGFloat(model.screenHeight) *
-            Constants.hamburgerCreditsYScreens - 60)
+            Constants.hamburgerCreditsYScreens - (labelHeight * 3))
         model.menu.hamburgerMenu.githubLinkX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.githubLinkY = Int(CGFloat(model.screenHeight) *

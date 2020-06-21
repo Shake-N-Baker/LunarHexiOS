@@ -233,7 +233,7 @@ class HamburgerMenuView {
         let stringRange = NSRange(location: 0, length: attributedText.length)
         attributedText.beginEditing()
         attributedText.addAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor.blue,
+            NSAttributedString.Key.foregroundColor: UIColor(red: 51/255, green: 102/255, blue: 187/255, alpha: 1),
             NSAttributedString.Key.font: UIFont.init(name: "Lato-Regular", size: size)!,
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
         ], range: stringRange)
