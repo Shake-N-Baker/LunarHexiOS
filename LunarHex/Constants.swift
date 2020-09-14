@@ -101,6 +101,16 @@ class Constants {
     static let hamburgerMusicYScreens: CGFloat = 0.68
 
     /**
+     The position of the hamburger menu volume slider (sound / music) in screen widths.
+     */
+    static let hamburgerVolumeSliderXScreens: CGFloat = 0.32
+
+    /**
+     The width of the hamburger menu volume slider (sound / music) in screen widths.
+     */
+    static let hamburgerVolumeSliderWidthScreens: CGFloat = 0.47
+
+    /**
      The position of the hamburger menu privacy policy link in screen heights.
      */
     static let hamburgerPrivacyPolicyYScreens: CGFloat = 0.56
@@ -195,4 +205,10 @@ class Constants {
      The menu tap velocity reduction per update in screen widths.
      */
     static let tapVelocityResistanceXScreens: CGFloat = 0.001
+
+    /**
+     How many times bigger the selection circle radius is compared to the volume slider circle.
+     Volume circle = selection circle radius / this number.
+     */
+    static let selectionCircleToVolumeSliderRatio: Int = 8
 }

@@ -57,6 +57,7 @@ class ScreenSizeController {
     private func setScreenSizeHamburgerMenuValues() {
         setHamburgerMenuLabelValues()
         setHamburgerMenuLinkValues()
+        setHamburgerMenuVolumeSliderValues()
     }
 
     /**
@@ -128,6 +129,18 @@ class ScreenSizeController {
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.githubLinkY = Int(CGFloat(model.screenHeight) *
             Constants.hamburgerGithubYScreens)
+    }
+
+    /**
+     Assigns hamburger menu volume slider values based on the screen dimensions.
+     */
+    private func setHamburgerMenuVolumeSliderValues() {
+        model.menu.hamburgerMenu.volumeSliderX = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerVolumeSliderXScreens)
+        model.menu.hamburgerMenu.volumeSliderWidth = Int(CGFloat(model.screenWidth) *
+            Constants.hamburgerVolumeSliderWidthScreens)
+        model.menu.hamburgerMenu.volumeSliderCircleRadius = model.menu.selectionCircleRadius /
+            Constants.selectionCircleToVolumeSliderRatio
     }
 
     /**

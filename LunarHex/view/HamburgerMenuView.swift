@@ -95,6 +95,26 @@ class HamburgerMenuView {
     var githubLink: SKLabelNode!
 
     /**
+     The sound volume control bar.
+     */
+    var soundBar: SKShapeNode!
+
+    /**
+     The sound volume control circle.
+     */
+    var soundCircle: SKShapeNode!
+
+    /**
+     The music volume control bar.
+     */
+    var musicBar: SKShapeNode!
+
+    /**
+     The music volume control circle.
+     */
+    var musicCircle: SKShapeNode!
+
+    /**
      Initializes the hamburger menu view.
      - Parameter mainScene: Reference to the main scene.
      - Parameter mainModel: Reference to the main model.
@@ -108,6 +128,7 @@ class HamburgerMenuView {
         initializeBackground()
         initializeLabels()
         initializeLinks()
+        initializeVolumeControls()
     }
 
     /**
@@ -247,5 +268,38 @@ class HamburgerMenuView {
         newLink.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         container.addChild(newLink)
         return newLink
+    }
+
+    /**
+     Initializes the hamburger menu volume controls.
+     */
+    private func initializeVolumeControls() {
+        let linePath = CGMutablePath()
+        linePath.move(to: CGPoint(x: 0, y: 0))
+        linePath.addLine(to: CGPoint(x: model.menu.hamburgerMenu.volumeSliderWidth, y: 0))
+        soundBar = SKShapeNode(path: linePath)
+        soundBar.strokeColor = SKColor.white
+        soundBar.lineWidth = 5
+        soundBar.lineCap = CGLineCap.round
+        soundBar.zPosition = 101
+        soundBar.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX, y: model.menu.hamburgerMenu.soundY)
+        container.addChild(soundBar)
+        soundCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.hamburgerMenu.volumeSliderCircleRadius))
+        soundCircle.fillColor = SKColor.white
+        soundCircle.zPosition = 101
+        soundCircle.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX, y: model.menu.hamburgerMenu.soundY)
+        container.addChild(soundCircle)
+        musicBar = SKShapeNode(path: linePath)
+        musicBar.zPosition = 101
+        musicBar.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX, y: model.menu.hamburgerMenu.musicY)
+        musicBar.strokeColor = SKColor.white
+        musicBar.lineWidth = 5
+        musicBar.lineCap = CGLineCap.round
+        container.addChild(musicBar)
+        musicCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.hamburgerMenu.volumeSliderCircleRadius))
+        musicCircle.fillColor = SKColor.white
+        musicCircle.zPosition = 101
+        musicCircle.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX, y: model.menu.hamburgerMenu.musicY)
+        container.addChild(musicCircle)
     }
 }

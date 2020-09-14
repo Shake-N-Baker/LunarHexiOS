@@ -44,6 +44,21 @@ class HamburgerMenuModel {
     var musicY: Int!
 
     /**
+     The volume (sound / music) control X coordinate of the left side of the slider.
+     */
+    var volumeSliderX: Int!
+
+    /**
+     The volume (sound / music) control slider width.
+     */
+    var volumeSliderWidth: Int!
+
+    /**
+     The volume (sound / music) control slider circle radius.
+     */
+    var volumeSliderCircleRadius: Int!
+
+    /**
      The privacy policy link position X coordinate.
      */
     var privacyPolicyX: Int!
