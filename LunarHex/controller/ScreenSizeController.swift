@@ -67,7 +67,8 @@ class ScreenSizeController {
         let label = SKLabelNode(fontNamed: "Lato-Regular")
         label.fontSize = 15
         label.text = "FOLLOW ME ON TWITTER::"
-        let labelHeight: CGFloat = (label.frame.size.height * 1.1)
+        let labelHeight: CGFloat = (label.frame.size.height *
+            Constants.hamburgerAfterCreditsSpacingMagnitude)
         model.menu.hamburgerMenu.audioX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.audioY = Int(CGFloat(model.screenHeight) *
@@ -110,7 +111,8 @@ class ScreenSizeController {
         label.fontSize = 15
         label.text = "FOLLOW ME ON TWITTER::"
         let followMeWidth: CGFloat = label.frame.size.width
-        let labelHeight: CGFloat = (label.frame.size.height * 1.1)
+        let labelHeight: CGFloat = (label.frame.size.height *
+            Constants.hamburgerAfterCreditsSpacingMagnitude)
         label.text = "MUSIC BY::"
         let musicByWidth: CGFloat = label.frame.size.width
         model.menu.hamburgerMenu.privacyPolicyX = Int(CGFloat(model.screenWidth) *

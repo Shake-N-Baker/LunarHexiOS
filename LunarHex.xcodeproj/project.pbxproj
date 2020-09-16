@@ -34,6 +34,7 @@
 		2190C18121DDC9A90017726B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2190C17F21DDC9A90017726B /* Main.storyboard */; };
 		2190C18321DDC9AB0017726B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2190C18221DDC9AB0017726B /* Assets.xcassets */; };
 		2190C18621DDC9AB0017726B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2190C18421DDC9AB0017726B /* LaunchScreen.storyboard */; };
+		21A465992511CB3B00569DA2 /* HamburgerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		2190C18221DDC9AB0017726B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2190C18521DDC9AB0017726B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2190C18721DDC9AB0017726B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				2185DEB523385CB6003DB3D8 /* TapController.swift */,
 				2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */,
 				215BD3DF240B761C006782B9 /* BoardController.swift */,
+				21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				2108EDEA22239EB2008A2D3A /* MenuController.swift in Sources */,
 				2190C17C21DDC9A90017726B /* MainView.swift in Sources */,
+				21A465992511CB3B00569DA2 /* HamburgerMenuController.swift in Sources */,
 				215BD3E0240B761C006782B9 /* BoardController.swift in Sources */,
 				215BD3EA240CB4EF006782B9 /* AllBoardsModel.swift in Sources */,
 				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,

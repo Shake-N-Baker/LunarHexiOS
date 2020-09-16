@@ -172,11 +172,13 @@ class HamburgerMenuView {
         sound = addLabel(
             position: CGPoint(x: model.menu.hamburgerMenu.soundX, y: model.menu.hamburgerMenu.soundY),
             size: 15,
-            text: "SOUND:")
+            text: "SOUND:",
+            verticalAlignment: SKLabelVerticalAlignmentMode.center)
         music = addLabel(
             position: CGPoint(x: model.menu.hamburgerMenu.musicX, y: model.menu.hamburgerMenu.musicY),
             size: 15,
-            text: "MUSIC:")
+            text: "MUSIC:",
+            verticalAlignment: SKLabelVerticalAlignmentMode.center)
         credits = addLabel(
             position: CGPoint(x: model.menu.hamburgerMenu.creditsX, y: model.menu.hamburgerMenu.creditsY),
             size: 20,
@@ -227,16 +229,22 @@ class HamburgerMenuView {
      - Parameter position: The position of the label.
      - Parameter size: The size of the font.
      - Parameter text: The text of the label.
+     - Parameter verticalAlignment: The vertical alignment of the label.
      - Returns: The newly added label.
      */
-    private func addLabel(position: CGPoint, size: CGFloat, text: String) -> SKLabelNode {
+    private func addLabel(
+        position: CGPoint,
+        size: CGFloat,
+        text: String,
+        verticalAlignment: SKLabelVerticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
+    ) -> SKLabelNode {
         let newLabel = SKLabelNode(fontNamed: "Lato-Regular")
         newLabel.zPosition = 101
         newLabel.position = position
         newLabel.fontSize = size
         newLabel.text = text
         newLabel.fontColor = SKColor.white
-        newLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+        newLabel.verticalAlignmentMode = verticalAlignment
         newLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         container.addChild(newLabel)
         return newLabel
@@ -264,7 +272,7 @@ class HamburgerMenuView {
         newLink.zPosition = 101
         newLink.position = position
         newLink.attributedText = attributedText
-        newLink.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+        newLink.verticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
         newLink.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         container.addChild(newLink)
         return newLink

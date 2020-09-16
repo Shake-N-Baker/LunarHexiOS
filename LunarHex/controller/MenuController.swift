@@ -20,11 +20,17 @@ class MenuController {
     var model: MainModel!
 
     /**
+     Reference to the hamburger menu controller.
+     */
+    var hamburgerMenuController: HamburgerMenuController!
+
+    /**
      Initializes the menu controller.
      - Parameter mainModel: Reference to the main model.
      */
     public init(_ mainModel: MainModel) {
         model = mainModel
+        hamburgerMenuController = HamburgerMenuController(model)
     }
 
     /**
@@ -174,30 +180,11 @@ class MenuController {
     private func handleTapEvent() -> Bool {
         var somethingTapped: Bool = false
         if model.menu.hamburgerMenuOpen {
-            somethingTapped = handleHamburgerMenuTapEvent()
+            somethingTapped = hamburgerMenuController.handleHamburgerMenuTapEvent()
         } else {
             somethingTapped = handleMainMenuTapEvent()
         }
         return somethingTapped
-    }
-
-    /**
-     Checks the tap event on the hamburger menu to see if any buttons or other interactable objects were
-     tapped and handles logic for if they were tapped.
-     - Returns: Whether any buttons or other interactable objects were tapped.
-     */
-    private func handleHamburgerMenuTapEvent() -> Bool {
-        if tappedHamburgerMenu() {
-            model.menu.hamburgerMenuOpen = false
-            return true
-        }
-        // Check github link
-        // Check privacy policy link
-        // Check twitter link
-        // Check music link
-        // Check sound control slider
-        // Check music control slider
-        return false
     }
 
     /**
@@ -206,7 +193,7 @@ class MenuController {
      - Returns: Whether any buttons or other interactable objects were tapped.
      */
     private func handleMainMenuTapEvent() -> Bool {
-        if tappedHamburgerMenu() {
+        if hamburgerMenuController.tappedHamburgerMenu() {
             model.menu.hamburgerMenuOpen = true
             return true
         }
@@ -239,18 +226,6 @@ class MenuController {
             }
         }
         return false
-    }
-
-    /**
-     Checks whether a tap began and ended on the hamburger menu icon.
-     - Returns: Whether the tap began and ended on the hamburger menu icon.
-     */
-    private func tappedHamburgerMenu() -> Bool {
-        let x: Int = model.menu.hamburgerX - (model.menu.hamburgerWidth / 2) - model.drawPaddingX
-        let y: Int = model.menu.hamburgerY - (model.menu.hamburgerHeight / 2) - model.drawPaddingY
-        let width: Int = model.menu.hamburgerWidth + (model.drawPaddingX * 2)
-        let height: Int = model.menu.hamburgerHeight + (model.drawPaddingY * 2)
-        return tappedInSquare(x, y, width, height)
     }
 
     /**

@@ -121,6 +121,12 @@ class Constants {
     static let hamburgerCreditsYScreens: CGFloat = 0.43
 
     /**
+     The magnitude of spacing for texts after the credits label in the hamburger menu.
+     This number is multiplied against the text height to determine the spacing between texts.
+     */
+    static let hamburgerAfterCreditsSpacingMagnitude: CGFloat = 1.5
+
+    /**
      The position of the hamburger menu github link in screen heights.
      */
     static let hamburgerGithubYScreens: CGFloat = 0.11
