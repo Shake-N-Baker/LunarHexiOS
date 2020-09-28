@@ -115,6 +115,15 @@ class ScreenSizeController {
             Constants.hamburgerAfterCreditsSpacingMagnitude)
         label.text = "MUSIC BY::"
         let musicByWidth: CGFloat = label.frame.size.width
+        model.menu.hamburgerMenu.linkHeight = Int(labelHeight)
+        label.text = "PRIVACY POLICY"
+        model.menu.hamburgerMenu.privacyPolicyWidth = Int(label.frame.size.width)
+        label.text = "@IANDEVSGAMES"
+        model.menu.hamburgerMenu.twitterLinkWidth = Int(label.frame.size.width)
+        label.text = "MILIEU"
+        model.menu.hamburgerMenu.musicLinkWidth = Int(label.frame.size.width)
+        label.text = "VIEW SOURCE CODE ON GITHUB"
+        model.menu.hamburgerMenu.githubLinkWidth = Int(label.frame.size.width)
         model.menu.hamburgerMenu.privacyPolicyX = Int(CGFloat(model.screenWidth) *
             Constants.hamburgerHeaderTextXScreens)
         model.menu.hamburgerMenu.privacyPolicyY = Int(CGFloat(model.screenHeight) *

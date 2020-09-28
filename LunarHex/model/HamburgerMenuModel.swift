@@ -69,6 +69,11 @@ class HamburgerMenuModel {
     var privacyPolicyY: Int!
 
     /**
+     The privacy policy link width.
+     */
+    var privacyPolicyWidth: Int!
+
+    /**
      The credits label position X coordinate.
      */
     var creditsX: Int!
@@ -99,6 +104,11 @@ class HamburgerMenuModel {
     var followMeY: Int!
 
     /**
+     The height of the links.
+     */
+    var linkHeight: Int!
+
+    /**
      The twitter link position X coordinate.
      */
     var twitterLinkX: Int!
@@ -107,6 +117,11 @@ class HamburgerMenuModel {
      The twitter link position Y coordinate.
      */
     var twitterLinkY: Int!
+
+    /**
+     The twitter link width.
+     */
+    var twitterLinkWidth: Int!
 
     /**
      The music by label position X coordinate.
@@ -129,6 +144,11 @@ class HamburgerMenuModel {
     var musicLinkY: Int!
 
     /**
+     The music link width.
+     */
+    var musicLinkWidth: Int!
+
+    /**
      The inspired by label position X coordinate.
      */
     var inspiredByX: Int!
@@ -147,6 +167,11 @@ class HamburgerMenuModel {
      The github link position Y coordinate.
      */
     var githubLinkY: Int!
+
+    /**
+     The github link width.
+     */
+    var githubLinkWidth: Int!
 
     /**
      Initializes the hamburger menu model.

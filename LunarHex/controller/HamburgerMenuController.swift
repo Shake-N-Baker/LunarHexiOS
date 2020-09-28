@@ -85,8 +85,8 @@ class HamburgerMenuController {
     private func tappedGithubLink() -> Bool {
         let x: Int = model.menu.hamburgerMenu.githubLinkX
         let y: Int = model.menu.hamburgerMenu.githubLinkY
-        let width: Int = 100
-        let height: Int = 20
+        let width: Int = model.menu.hamburgerMenu.githubLinkWidth
+        let height: Int = model.menu.hamburgerMenu.linkHeight
         return tappedInSquare(x, y, width, height)
     }
 
@@ -97,8 +97,8 @@ class HamburgerMenuController {
     private func tappedPrivacyPolicyLink() -> Bool {
         let x: Int = model.menu.hamburgerMenu.privacyPolicyX
         let y: Int = model.menu.hamburgerMenu.privacyPolicyY
-        let width: Int = 100
-        let height: Int = 20
+        let width: Int = model.menu.hamburgerMenu.privacyPolicyWidth
+        let height: Int = model.menu.hamburgerMenu.linkHeight
         return tappedInSquare(x, y, width, height)
     }
 
@@ -109,8 +109,8 @@ class HamburgerMenuController {
     private func tappedTwitterLink() -> Bool {
         let x: Int = model.menu.hamburgerMenu.twitterLinkX
         let y: Int = model.menu.hamburgerMenu.twitterLinkY
-        let width: Int = 100
-        let height: Int = 20
+        let width: Int = model.menu.hamburgerMenu.twitterLinkWidth
+        let height: Int = model.menu.hamburgerMenu.linkHeight
         return tappedInSquare(x, y, width, height)
     }
 
@@ -121,8 +121,8 @@ class HamburgerMenuController {
     private func tappedMusicLink() -> Bool {
         let x: Int = model.menu.hamburgerMenu.musicLinkX
         let y: Int = model.menu.hamburgerMenu.musicLinkY
-        let width: Int = 100
-        let height: Int = 20
+        let width: Int = model.menu.hamburgerMenu.musicLinkWidth
+        let height: Int = model.menu.hamburgerMenu.linkHeight
         return tappedInSquare(x, y, width, height)
     }
 
