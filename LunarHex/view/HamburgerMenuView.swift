@@ -137,6 +137,12 @@ class HamburgerMenuView {
     public func update() {
         if model.menu.hamburgerMenuOpen {
             container.isHidden = false
+            soundCircle.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX +
+                                            (model.menu.hamburgerMenu.volumeSliderWidth * model.menu.soundVolume) / 100,
+                                           y: model.menu.hamburgerMenu.soundY)
+            musicCircle.position = CGPoint(x: model.menu.hamburgerMenu.volumeSliderX +
+                                            (model.menu.hamburgerMenu.volumeSliderWidth * model.menu.musicVolume) / 100,
+                                           y: model.menu.hamburgerMenu.musicY)
         } else {
             container.isHidden = true
         }

@@ -58,6 +58,8 @@ class MenuController {
             model.menu.screenOffset = model.menu.tapOffsetStart + model.touch.downX - model.touch.x
             model.menu.screenOffset = min(max(model.menu.screenOffset, 0), model.menu.screenOffsetRightBound)
             model.menu.viewingLevel = CGFloat(model.menu.screenOffset) / CGFloat(model.menu.levelSpacing)
+        } else {
+            hamburgerMenuController.handleHamburgerMenuTouchMoved()
         }
     }
 

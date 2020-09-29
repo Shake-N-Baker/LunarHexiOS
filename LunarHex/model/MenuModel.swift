@@ -77,6 +77,16 @@ class MenuModel {
     var hamburgerMenuOpen: Bool = false
 
     /**
+     The volume of the sound from 0 to 100.
+     */
+    var soundVolume: Int = 0
+
+    /**
+     The volume of the music from 0 to 100.
+     */
+    var musicVolume: Int = 0
+
+    /**
      The title position X coordinate.
      */
     var titleX: Int!

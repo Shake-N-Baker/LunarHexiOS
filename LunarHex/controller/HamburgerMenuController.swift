@@ -28,6 +28,18 @@ class HamburgerMenuController {
     }
 
     /**
+     Handles updating the hamburger menu when a touch event changes position.
+     */
+    public func handleHamburgerMenuTouchMoved() {
+        if tappedSoundSlider() {
+            model.menu.soundVolume = getVolume()
+        }
+        if tappedMusicSlider() {
+            model.menu.musicVolume = getVolume()
+        }
+    }
+
+    /**
      Checks the tap event on the hamburger menu to see if any buttons or other interactable objects were
      tapped and handles logic for if they were tapped.
      - Returns: Whether any buttons or other interactable objects were tapped.
@@ -37,6 +49,22 @@ class HamburgerMenuController {
             model.menu.hamburgerMenuOpen = false
             return true
         }
+        if tappedSoundSlider() {
+            model.menu.soundVolume = getVolume()
+            return true
+        }
+        if tappedMusicSlider() {
+            model.menu.musicVolume = getVolume()
+            return true
+        }
+        return handleLinkTapEvent()
+    }
+
+    /**
+     Checks whether a tap began and ended on a hamburger menu link and responses properly.
+     - Returns: Whether the tap began and ended on a hamburger menu link.
+     */
+    private func handleLinkTapEvent() -> Bool {
         if tappedGithubLink() {
             if let url = URL(string: "https://github.com/Shake-N-Baker/LunarHexiOS") {
                 UIApplication.shared.open(url)
@@ -61,8 +89,6 @@ class HamburgerMenuController {
             }
             return true
         }
-        // Check sound control slider
-        // Check music control slider
         return false
     }
 
@@ -124,6 +150,40 @@ class HamburgerMenuController {
         let width: Int = model.menu.hamburgerMenu.musicLinkWidth
         let height: Int = model.menu.hamburgerMenu.linkHeight
         return tappedInSquare(x, y, width, height)
+    }
+
+    /**
+     Checks whether a tap began and ended on the hamburger menu sound slider.
+     - Returns: Whether the tap began and ended on the hamburger menu sound slider.
+     */
+    public func tappedSoundSlider() -> Bool {
+        let x: Int = model.menu.hamburgerMenu.volumeSliderX
+        let y: Int = model.menu.hamburgerMenu.soundY - 20
+        let width: Int = model.menu.hamburgerMenu.volumeSliderWidth
+        let height: Int = 40
+        return tappedInSquare(x, y, width, height)
+    }
+
+    /**
+     Checks whether a tap began and ended on the hamburger menu music slider.
+     - Returns: Whether the tap began and ended on the hamburger menu music slider.
+     */
+    public func tappedMusicSlider() -> Bool {
+        let x: Int = model.menu.hamburgerMenu.volumeSliderX
+        let y: Int = model.menu.hamburgerMenu.musicY - 20
+        let width: Int = model.menu.hamburgerMenu.volumeSliderWidth
+        let height: Int = 40
+        return tappedInSquare(x, y, width, height)
+    }
+    
+    /**
+     Returns the volume from 0 to 100 based on where the touch event hit the volume slider.
+     - Returns: The volume from 0 to 100.
+     */
+    public func getVolume() -> Int {
+        let volume = Int((CGFloat(model.touch.x - model.menu.hamburgerMenu.volumeSliderX) /
+                        CGFloat(model.menu.hamburgerMenu.volumeSliderWidth)) * 100)
+        return min(max(volume, 0), 100)
     }
 
     /**
