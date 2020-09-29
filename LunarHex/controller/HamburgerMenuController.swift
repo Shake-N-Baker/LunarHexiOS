@@ -158,9 +158,9 @@ class HamburgerMenuController {
      */
     public func tappedSoundSlider() -> Bool {
         let x: Int = model.menu.hamburgerMenu.volumeSliderX
-        let y: Int = model.menu.hamburgerMenu.soundY - 20
+        let y: Int = model.menu.hamburgerMenu.soundY - model.menu.hamburgerMenu.volumeSliderCircleRadius
         let width: Int = model.menu.hamburgerMenu.volumeSliderWidth
-        let height: Int = 40
+        let height: Int = model.menu.hamburgerMenu.volumeSliderCircleRadius * 2
         return tappedInSquare(x, y, width, height)
     }
 
@@ -170,12 +170,12 @@ class HamburgerMenuController {
      */
     public func tappedMusicSlider() -> Bool {
         let x: Int = model.menu.hamburgerMenu.volumeSliderX
-        let y: Int = model.menu.hamburgerMenu.musicY - 20
+        let y: Int = model.menu.hamburgerMenu.musicY - model.menu.hamburgerMenu.volumeSliderCircleRadius
         let width: Int = model.menu.hamburgerMenu.volumeSliderWidth
-        let height: Int = 40
+        let height: Int = model.menu.hamburgerMenu.volumeSliderCircleRadius * 2
         return tappedInSquare(x, y, width, height)
     }
-    
+
     /**
      Returns the volume from 0 to 100 based on where the touch event hit the volume slider.
      - Returns: The volume from 0 to 100.
