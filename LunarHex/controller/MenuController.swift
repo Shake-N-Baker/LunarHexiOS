@@ -37,10 +37,14 @@ class MenuController {
      Handles updating the menu for the current game tick.
      */
     public func update() {
-        updateScreenOffset()
-        updateSelectionCircle()
-        updateTextTransparency()
-        updatePreviewBoard()
+        if model.animation.fadingIn || model.animation.fadingOut {
+            updateTransitionAnimations()
+        } else {
+            updateScreenOffset()
+            updateSelectionCircle()
+            updateTextTransparency()
+            updatePreviewBoard()
+        }
     }
 
     /**
@@ -70,6 +74,22 @@ class MenuController {
         let somethingTapped: Bool = handleTapEvent()
         if !somethingTapped && !model.menu.hamburgerMenuOpen {
             calculateTapVelocity()
+        }
+    }
+
+    /**
+     Handles updating the transition animations of the menu.
+     */
+    private func updateTransitionAnimations() {
+        model.animation.animationFramesLeft -= 1
+        if model.animation.animationFramesLeft <= 0 {
+            if model.animation.fadingOut {
+                model.viewingMenu = false
+                model.game.currentLevel = model.animation.selectedLevel
+            } else if model.animation.fadingIn {
+                model.animation.fadingIn = false
+                model.animation.fadingOut = false
+            }
         }
     }
 
@@ -203,9 +223,9 @@ class MenuController {
             if tappedInCircle(model.menu.selectionCircleX,
                 model.menu.selectionCircleY, model.menu.selectionCircleRadius) {
                 if Int(round(model.menu.viewingLevel)) == Constants.levels + 1 {
-                    // Random level
+                    handleRandomLevelTap()
                 } else if Int(round(model.menu.viewingLevel)) != 0 {
-                    // Play selected level
+                    handleLevelTap()
                 }
                 return true
             }
@@ -228,6 +248,28 @@ class MenuController {
             }
         }
         return false
+    }
+
+    /**
+     Handles logic for tapping on the random level.
+     */
+    private func handleRandomLevelTap() {
+        model.animation.fadingOut = true
+        model.animation.animationFramesLeft = 20
+        model.animation.animationType = AnimationType.newCustomGame
+        model.animation.selectedLevel = -1
+        // Play tap sound
+    }
+
+    /**
+     Handles logic for tapping on a numbered level.
+     */
+    private func handleLevelTap() {
+        model.animation.fadingOut = true
+        model.animation.animationFramesLeft = 20
+        model.animation.animationType = AnimationType.startLevel
+        model.animation.selectedLevel = Int(round(model.menu.viewingLevel)) - 1
+        // Play tap sound
     }
 
     /**

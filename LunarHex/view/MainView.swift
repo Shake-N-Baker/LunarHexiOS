@@ -30,6 +30,11 @@ class MainView {
     var menuView: MenuView!
 
     /**
+     Reference to the view in charge of displaying the game.
+     */
+    var gameView: GameView!
+
+    /**
      The background image.
      */
     var background: SKSpriteNode!
@@ -43,6 +48,7 @@ class MainView {
         scene = mainScene
         model = mainModel
         menuView = MenuView(scene, model)
+        gameView = GameView(scene, model)
 
         initializeBackground()
     }
@@ -55,6 +61,7 @@ class MainView {
             x: model.backgroundX - (model.menu.screenOffset / Constants.backgroundOffsetDampeningMagnitude),
             y: model.backgroundY)
         menuView.update()
+        gameView.update()
     }
 
     /**

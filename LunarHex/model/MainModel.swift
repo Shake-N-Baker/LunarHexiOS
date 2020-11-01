@@ -19,6 +19,11 @@ class MainModel {
     var menu: MenuModel!
 
     /**
+     Reference to the game model.
+     */
+    var game: GameModel!
+
+    /**
      Reference to the touch event model.
      */
     var touch: TouchModel!
@@ -27,6 +32,11 @@ class MainModel {
      Reference to the model holding all boards.
      */
     var board: AllBoardsModel!
+
+    /**
+     Reference to the current played animation model.
+     */
+    var animation: AnimationModel!
 
     /**
      The screen width measured from the scene.
@@ -75,7 +85,9 @@ class MainModel {
     public init(_ mainScene: MainScene) {
         board = AllBoardsModel()
         menu = MenuModel()
+        game = GameModel()
         touch = TouchModel()
+        animation = AnimationModel()
         screenWidth = Int(mainScene.size.width)
         screenHeight = Int(mainScene.size.height)
     }

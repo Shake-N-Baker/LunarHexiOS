@@ -30,6 +30,11 @@ class MenuView {
     var hamburgerMenuView: HamburgerMenuView!
 
     /**
+     The container holding all elements of the menu.
+     */
+    var container: SKShapeNode!
+
+    /**
      The menu title label.
      */
     var title: SKLabelNode!
@@ -73,27 +78,30 @@ class MenuView {
         scene = mainScene
         model = mainModel
         hamburgerMenuView = HamburgerMenuView(scene, model)
+        container = SKShapeNode(circleOfRadius: 0)
+        container.position = CGPoint(x: 0, y: 0)
+        scene.addChild(container)
         title = SKLabelNode(fontNamed: "Lato-Heavy")
         title.zPosition = 1
         title.position = CGPoint(x: model.menu.titleX, y: model.menu.titleY)
         title.fontSize = 60
         title.text = "LUNAR HEX"
         title.fontColor = SKColor.white
-        scene.addChild(title)
+        container.addChild(title)
         random = SKLabelNode(fontNamed: "Lato-Regular")
         random.zPosition = 1
         random.position = CGPoint(x: model.menu.randomX, y: model.menu.randomY)
         random.fontSize = 30
         random.text = "RANDOM"
         random.fontColor = SKColor.white
-        scene.addChild(random)
+        container.addChild(random)
         selectionCircle = SKShapeNode(circleOfRadius: CGFloat(model.menu.selectionCircleRadius))
         selectionCircle.zPosition = 1
         selectionCircle.position = CGPoint(x: model.menu.selectionCircleX, y: model.menu.selectionCircleY)
         selectionCircle.strokeColor = SKColor.white
         selectionCircle.glowWidth = 1.0
         selectionCircle.fillColor = SKColor.clear
-        scene.addChild(selectionCircle)
+        container.addChild(selectionCircle)
         initializeLevelLabels()
         initializeLevelStars()
         initializePreviewBoard()
@@ -104,6 +112,11 @@ class MenuView {
      Handles updating the menu view for the current game tick.
      */
     public func update() {
+        if model.viewingMenu {
+            container.isHidden = false
+        } else {
+            container.isHidden = true
+        }
         hamburgerMenuView.update()
         title.position = CGPoint(x: model.menu.titleX - model.menu.screenOffset, y: model.menu.titleY)
         title.fontColor = SKColor.init(red: 1, green: 1, blue: 1, alpha: model.menu.titleTransparency)
@@ -139,7 +152,7 @@ class MenuView {
             level.fontSize = 30
             level.text = "\(index + 1)"
             level.fontColor = SKColor.white
-            scene.addChild(level)
+            container.addChild(level)
             levels.append(level)
         }
     }
@@ -153,7 +166,7 @@ class MenuView {
             let star: SKSpriteNode = SKSpriteNode(texture: unfinished)
             star.position = CGPoint(x: model.menu.levelX[index] + (model.menu.starWidth / 2),
                                     y: model.menu.levelY[index] - model.menu.selectionCircleRadius)
-            scene.addChild(star)
+            container.addChild(star)
             levelStars.append(star)
         }
     }
@@ -184,7 +197,7 @@ class MenuView {
                 previewCircle.strokeColor = SKColor.clear
                 previewCircle.glowWidth = 0
                 previewCircle.fillColor = SKColor.red
-                scene.addChild(previewCircle)
+                container.addChild(previewCircle)
                 previewBoardCircles.append(previewCircle)
             }
         }
@@ -224,7 +237,7 @@ class MenuView {
         hamburgerMenu = SKSpriteNode(texture: texture)
         hamburgerMenu.position = CGPoint(x: model.menu.hamburgerX, y: model.menu.hamburgerY)
         hamburgerMenu.zPosition = 101
-        scene.addChild(hamburgerMenu)
+        container.addChild(hamburgerMenu)
     }
 
     /**

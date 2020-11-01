@@ -25,6 +25,9 @@
 		215BD3EA240CB4EF006782B9 /* AllBoardsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */; };
 		215BD3EC241F265F006782B9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3EB241F265F006782B9 /* Extensions.swift */; };
 		215BD3EE242083D0006782B9 /* BoardStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BD3ED242083D0006782B9 /* BoardStateModel.swift */; };
+		2181CBA4254F551300D2F890 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181CBA3254F551300D2F890 /* GameModel.swift */; };
+		2181CBA7254F562100D2F890 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181CBA6254F562100D2F890 /* GameController.swift */; };
+		2181CBAA254F582900D2F890 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2181CBA9254F582900D2F890 /* GameView.swift */; };
 		2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB523385CB6003DB3D8 /* TapController.swift */; };
 		2185DEB8233C68E3003DB3D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185DEB7233C68E3003DB3D8 /* Utils.swift */; };
 		2190C17621DDC9A90017726B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190C17521DDC9A90017726B /* AppDelegate.swift */; };
@@ -35,6 +38,7 @@
 		2190C18321DDC9AB0017726B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2190C18221DDC9AB0017726B /* Assets.xcassets */; };
 		2190C18621DDC9AB0017726B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2190C18421DDC9AB0017726B /* LaunchScreen.storyboard */; };
 		21A465992511CB3B00569DA2 /* HamburgerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */; };
+		21C405B02546789C0041C700 /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C405AF2546789C0041C700 /* AnimationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,9 @@
 		215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoardsModel.swift; sourceTree = "<group>"; };
 		215BD3EB241F265F006782B9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		215BD3ED242083D0006782B9 /* BoardStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateModel.swift; sourceTree = "<group>"; };
+		2181CBA3254F551300D2F890 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		2181CBA6254F562100D2F890 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		2181CBA9254F582900D2F890 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		2185DEB523385CB6003DB3D8 /* TapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapController.swift; sourceTree = "<group>"; };
 		2185DEB7233C68E3003DB3D8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2190C17221DDC9A90017726B /* LunarHex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LunarHex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +75,7 @@
 		2190C18521DDC9AB0017726B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2190C18721DDC9AB0017726B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuController.swift; sourceTree = "<group>"; };
+		21C405AF2546789C0041C700 /* AnimationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,8 @@
 				215BD3E9240CB4EF006782B9 /* AllBoardsModel.swift */,
 				215BD3ED242083D0006782B9 /* BoardStateModel.swift */,
 				2140B955248CA3C1005EE0A2 /* HamburgerMenuModel.swift */,
+				21C405AF2546789C0041C700 /* AnimationModel.swift */,
+				2181CBA3254F551300D2F890 /* GameModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 				2190C17B21DDC9A90017726B /* MainView.swift */,
 				2108EDE5221D05EF008A2D3A /* MenuView.swift */,
 				2140B953248745FF005EE0A2 /* HamburgerMenuView.swift */,
+				2181CBA9254F582900D2F890 /* GameView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -113,6 +124,7 @@
 				2135602C23DD4E8C004C42CC /* ScreenSizeController.swift */,
 				215BD3DF240B761C006782B9 /* BoardController.swift */,
 				21A465982511CB3B00569DA2 /* HamburgerMenuController.swift */,
+				2181CBA6254F562100D2F890 /* GameController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -280,12 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2108EDEA22239EB2008A2D3A /* MenuController.swift in Sources */,
+				21C405B02546789C0041C700 /* AnimationModel.swift in Sources */,
 				2190C17C21DDC9A90017726B /* MainView.swift in Sources */,
 				21A465992511CB3B00569DA2 /* HamburgerMenuController.swift in Sources */,
 				215BD3E0240B761C006782B9 /* BoardController.swift in Sources */,
 				215BD3EA240CB4EF006782B9 /* AllBoardsModel.swift in Sources */,
 				2108EDE6221D05EF008A2D3A /* MenuView.swift in Sources */,
 				2185DEB623385CB6003DB3D8 /* TapController.swift in Sources */,
+				2181CBA7254F562100D2F890 /* GameController.swift in Sources */,
 				2190C17E21DDC9A90017726B /* GameViewController.swift in Sources */,
 				2140B954248745FF005EE0A2 /* HamburgerMenuView.swift in Sources */,
 				2108EDE8221D06FC008A2D3A /* MenuModel.swift in Sources */,
@@ -299,6 +313,8 @@
 				215BD3EE242083D0006782B9 /* BoardStateModel.swift in Sources */,
 				2108EDEE223F35AA008A2D3A /* TouchModel.swift in Sources */,
 				2185DEB8233C68E3003DB3D8 /* Utils.swift in Sources */,
+				2181CBAA254F582900D2F890 /* GameView.swift in Sources */,
+				2181CBA4254F551300D2F890 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

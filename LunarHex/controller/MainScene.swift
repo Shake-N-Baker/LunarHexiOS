@@ -31,6 +31,11 @@ class MainScene: SKScene {
     var menuController: MenuController!
 
     /**
+     Reference to the game controller.
+     */
+    var gameController: GameController!
+
+    /**
      Reference to the screen size controller.
      */
     var screenSizeController: ScreenSizeController!
@@ -59,6 +64,7 @@ class MainScene: SKScene {
         screenSizeController = ScreenSizeController(model)
         boardController = BoardController(model)
         menuController = MenuController(model)
+        gameController = GameController(model)
         tapController = TapController(model)
         mainView = MainView(self, model)
     }
@@ -73,7 +79,11 @@ class MainScene: SKScene {
         } else if currentTime >= nextUpdateTime {
             nextUpdateTime = currentTime + Constants.updateInterval
             tapController.update()
-            menuController.update()
+            if model.viewingMenu {
+                menuController.update()
+            } else {
+                gameController.update()
+            }
             mainView.update()
         }
     }
@@ -94,7 +104,11 @@ class MainScene: SKScene {
             model.touch.downY = model.touch.y
         }
         tapController.touchBegan()
-        menuController.touchBegan()
+        if model.viewingMenu {
+            menuController.touchBegan()
+        } else {
+            gameController.touchBegan()
+        }
     }
 
     /**
@@ -110,7 +124,11 @@ class MainScene: SKScene {
             model.touch.x = Int(touch.location(in: self).x)
             model.touch.y = Int(touch.location(in: self).y)
         }
-        menuController.touchMoved()
+        if model.viewingMenu {
+            menuController.touchMoved()
+        } else {
+            gameController.touchMoved()
+        }
     }
 
     /**
@@ -127,6 +145,10 @@ class MainScene: SKScene {
             model.touch.y = Int(touch.location(in: self).y)
         }
         tapController.touchEnded()
-        menuController.touchEnded()
+        if model.viewingMenu {
+            menuController.touchEnded()
+        } else {
+            gameController.touchEnded()
+        }
     }
 }
