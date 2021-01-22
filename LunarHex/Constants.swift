@@ -217,4 +217,49 @@ class Constants {
      Volume circle = selection circle radius / this number.
      */
     static let selectionCircleToVolumeSliderRatio: Int = 8
+
+    /**
+     The width of all game icons in screen widths.
+     */
+    static let gameIconWidthScreens: CGFloat = 0.06
+
+    /**
+     The height of all game icons in screen heights.
+     */
+    static let gameIconHeightScreens: CGFloat = 0.08
+
+    /**
+     The position of the game home icon in screen widths.
+     */
+    static let gameHomeXScreens: CGFloat = 0.07
+
+    /**
+     The position of the game home icon in screen heights.
+     */
+    static let gameHomeYScreens: CGFloat = 0.86
+
+    /**
+     The position of the right aligned game icons in screen widths.
+     */
+    static let gameIconRightXScreens: CGFloat = 0.92
+
+    /**
+     The position of the first right aligned game icon in screen heights.
+     */
+    static let gameIconRightFirstYScreens: CGFloat = 0.86
+
+    /**
+     The position of the second right aligned game icon in screen heights.
+     */
+    static let gameIconRightSecondYScreens: CGFloat = 0.61
+
+    /**
+     The position of the third right aligned game icon in screen heights.
+     */
+    static let gameIconRightThirdYScreens: CGFloat = 0.36
+
+    /**
+     The position of the fourth right aligned game icon in screen heights.
+     */
+    static let gameIconRightFourthYScreens: CGFloat = 0.11
 }

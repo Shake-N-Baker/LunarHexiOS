@@ -26,6 +26,7 @@ class ScreenSizeController {
         model = mainModel
         setDrawPaddingValues()
         setScreenSizeMenuValues()
+        setScreenSizeGameValues()
         setBackgroundValues()
     }
 
@@ -49,6 +50,13 @@ class ScreenSizeController {
         setLevelJumpVelocities()
         setMenuIconValues()
         setScreenSizeHamburgerMenuValues()
+    }
+
+    /**
+     Assigns game values based on the screen dimensions.
+     */
+    private func setScreenSizeGameValues() {
+        setGameIconValues()
     }
 
     /**
@@ -264,5 +272,23 @@ class ScreenSizeController {
         model.menu.hamburgerHeight = Int(CGFloat(model.screenHeight) * Constants.menuHamburgerHeightScreens)
         model.menu.starWidth = Int(CGFloat(model.screenWidth) * Constants.starWidthScreens)
         model.menu.starHeight = Int(CGFloat(model.screenHeight) * Constants.starHeightScreens)
+    }
+
+    /**
+     Calculates and assigns the game icons values based on the screen dimensions.
+     */
+    private func setGameIconValues() {
+        model.game.gameIconWidth = Int(CGFloat(model.screenWidth) * Constants.gameIconWidthScreens)
+        model.game.gameIconHeight = Int(CGFloat(model.screenHeight) * Constants.gameIconHeightScreens)
+        model.game.gameIconRightX = Int(CGFloat(model.screenWidth) * Constants.gameIconRightXScreens) -
+            model.drawPaddingX
+        model.game.homeX = Int(CGFloat(model.screenWidth) * Constants.gameHomeXScreens) - model.drawPaddingX
+        model.game.homeY = Int(CGFloat(model.screenHeight) * Constants.gameHomeYScreens) + model.drawPaddingY
+        model.game.newBoardY = Int(CGFloat(model.screenHeight) * Constants.gameIconRightFirstYScreens) +
+            model.drawPaddingY
+        model.game.settingsY = Int(CGFloat(model.screenHeight) * Constants.gameIconRightSecondYScreens) +
+            model.drawPaddingY
+        model.game.retryY = Int(CGFloat(model.screenHeight) * Constants.gameIconRightThirdYScreens) + model.drawPaddingY
+        model.game.hintY = Int(CGFloat(model.screenHeight) * Constants.gameIconRightFourthYScreens) + model.drawPaddingY
     }
 }

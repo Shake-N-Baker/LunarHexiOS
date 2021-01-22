@@ -9,13 +9,6 @@
 import Foundation
 
 /**
- The type animation.
- */
-enum AnimationType {
-    case none, newCustomGame, startLevel, exitGame, transitionNextLevel
-}
-
-/**
  The Animation Model class holds the state of the current and or latest animation event.
  Such as transition animations from the game to the menu, and sliding piece animations.
  */
@@ -37,19 +30,7 @@ class AnimationModel {
     var animationFramesLeft: Int = 0
 
     /**
-     The current type of animation.
-     */
-    var animationType: AnimationType
-
-    /**
-     The selected level the animation is transitioning into.
-     */
-    var selectedLevel: Int = -2
-
-    /**
      Initializes the animation model.
      */
-    public init() {
-        animationType = AnimationType.none
-    }
+    public init() {}
 }

@@ -85,11 +85,11 @@ class MenuController {
         if model.animation.animationFramesLeft <= 0 {
             if model.animation.fadingOut {
                 model.viewingMenu = false
-                model.game.currentLevel = model.animation.selectedLevel
+                model.animation.fadingIn = true
             } else if model.animation.fadingIn {
                 model.animation.fadingIn = false
-                model.animation.fadingOut = false
             }
+            model.animation.fadingOut = false
         }
     }
 
@@ -256,8 +256,7 @@ class MenuController {
     private func handleRandomLevelTap() {
         model.animation.fadingOut = true
         model.animation.animationFramesLeft = 20
-        model.animation.animationType = AnimationType.newCustomGame
-        model.animation.selectedLevel = -1
+        model.game.currentLevel = -1
         // Play tap sound
     }
 
@@ -267,8 +266,7 @@ class MenuController {
     private func handleLevelTap() {
         model.animation.fadingOut = true
         model.animation.animationFramesLeft = 20
-        model.animation.animationType = AnimationType.startLevel
-        model.animation.selectedLevel = Int(round(model.menu.viewingLevel)) - 1
+        model.game.currentLevel = Int(round(model.menu.viewingLevel)) - 1
         // Play tap sound
     }
 
